@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+
+\bibitem{battenberg2012analyzing}
+Eric Battenberg and David Wessel.
+\newblock Analyzing drum patterns using conditional deep belief networks.
+\newblock In {\em ISMIR}, pages 37--42. Citeseer, 2012.
+
+\bibitem{boulanger2013audio}
+Nicolas Boulanger-Lewandowski, Yoshua Bengio, and Pascal Vincent.
+\newblock Audio chord recognition with recurrent neural networks.
+\newblock In {\em ISMIR}, pages 335--340, 2013.
+
+\bibitem{cho2011feature}
+Taemin Cho and Juan~P Bello.
+\newblock A feature smoothing method for chord recognition using recurrence
+  plots.
+\newblock 2011.
+
+\bibitem{cho2013mirex}
+Taemin Cho and Juan~P Bello.
+\newblock Mirex 2013: Large vocabulary chord recognition system using
+  multi-band features and a multi-stream hmm.
+\newblock {\em Music Information Retrieval Evaluation eXchange (MIREX)}, 2013.
+
+\bibitem{cho2010exploring}
+Taemin Cho, Ron~J Weiss, and Juan~Pablo Bello.
+\newblock Exploring common variations in state of the art chord recognition
+  systems.
+\newblock In {\em Proceedings of the Sound and Music Computing Conference
+  (SMC)}, pages 1--8. Citeseer, 2010.
+
+\bibitem{fujishima1999realtime}
+Takuya Fujishima.
+\newblock Realtime chord recognition of musical sound: A system using common
+  lisp music.
+\newblock In {\em Proc. ICMC}, volume 1999, pages 464--467, 1999.
+
+\bibitem{grezl2007probabilistic}
+Frantisek Grezl, Martin Karafi{\'a}t, Stanislav Kont{\'a}r, and J~Cernocky.
+\newblock Probabilistic and bottle-neck features for lvcsr of meetings.
+\newblock In {\em Acoustics, Speech and Signal Processing, 2007. ICASSP 2007.
+  IEEE International Conference on}, volume~4, pages IV--757. IEEE, 2007.
+
+\bibitem{hamel2010learning}
+Philippe Hamel and Douglas Eck.
+\newblock Learning features from music audio with deep belief networks.
+\newblock In {\em ISMIR}, pages 339--344. Utrecht, The Netherlands, 2010.
+
+\bibitem{hinton2012deep}
+Geoffrey Hinton, Li~Deng, Dong Yu, George~E Dahl, Abdel-rahman Mohamed, Navdeep
+  Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara~N Sainath,
+  et~al.
+\newblock Deep neural networks for acoustic modeling in speech recognition: The
+  shared views of four research groups.
+\newblock {\em Signal Processing Magazine, IEEE}, 29(6):82--97, 2012.
+
+\bibitem{hinton2006fast}
+Geoffrey Hinton, Simon Osindero, and Yee-Whye Teh.
+\newblock A fast learning algorithm for deep belief nets.
+\newblock {\em Neural computation}, 18(7):1527--1554, 2006.
+
+\bibitem{humphrey2012rethinking}
+Eric~J Humphrey and Juan~Pablo Bello.
+\newblock Rethinking automatic chord recognition with convolutional neural
+  networks.
+\newblock In {\em Machine Learning and Applications (ICMLA), 2012 11th
+  International Conference on}, volume~2, pages 357--362. IEEE, 2012.
+
+\bibitem{humphrey2012moving}
+Eric~J Humphrey, Juan~Pablo Bello, and Yann LeCun.
+\newblock Moving beyond feature design: Deep architectures and automatic
+  feature learning in music informatics.
+\newblock In {\em ISMIR}, pages 403--408. Citeseer, 2012.
+
+\bibitem{humphrey2012learning}
+Eric~J Humphrey, Taemin Cho, and Juan~Pablo Bello.
+\newblock Learning a robust tonnetz-space transform for automatic chord
+  recognition.
+\newblock In {\em Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE
+  International Conference on}, pages 453--456. IEEE, 2012.
+
+\bibitem{kawakami2000hidden}
+Takashi Kawakami, Mitsuru Nakai, Hiroshi Shimodaira, and Shigeki Sagayama.
+\newblock Hidden markov model applied to automatic harmonization of given
+  melodies.
+\newblock {\em Information Processing Society of Japan,(in Japanese), SIG
+  Notes}, pages 59--66, 2000.
+
+\bibitem{lecun1995convolutional}
+Yann LeCun and Yoshua Bengio.
+\newblock Convolutional networks for images, speech, and time series.
+\newblock {\em The handbook of brain theory and neural networks}, 3361:310,
+  1995.
+
+\bibitem{lee2009unsupervised}
+Honglak Lee, Peter Pham, Yan Largman, and Andrew~Y Ng.
+\newblock Unsupervised feature learning for audio classification using
+  convolutional deep belief networks.
+\newblock In {\em Advances in neural information processing systems}.
+
+\bibitem{ni2012using}
+Yizhao Ni, Matt McVicar, Raul Santos-Rodriguez, and Tijl De~Bie.
+\newblock Using hyper-genre training to explore genre information for automatic
+  chord estimation.
+\newblock In {\em ISMIR}, pages 109--114, 2012.
+
+\bibitem{norouzi2009stacks}
+Mohammad Norouzi, Mani Ranjbar, and Greg Mori.
+\newblock Stacks of convolutional restricted boltzmann machines for
+  shift-invariant feature learning.
+\newblock In {\em Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+  IEEE Conference on}, pages 2735--2742. IEEE, 2009.
+
+\bibitem{papadopoulos2007large}
+H{\'e}lene Papadopoulos and Geoffroy Peeters.
+\newblock Large-scale study of chord estimation algorithms based on chroma
+  representation and hmm.
+\newblock In {\em Content-Based Multimedia Indexing, 2007. CBMI'07.
+  International Workshop on}, pages 53--60. IEEE, 2007.
+
+\bibitem{povey2011kaldi}
+Daniel Povey, Arnab Ghoshal, Gilles Boulianne, Luk{\'a}{\v{s}} Burget,
+  Ond{\v{r}}ej Glembek, Nagendra Goel, Mirko Hannemann, Petr
+  Motl{\'\i}{\v{c}}ek, Yanmin Qian, Petr Schwarz, et~al.
+\newblock The kaldi speech recognition toolkit.
+\newblock 2011.
+
+\bibitem{sola1997importance}
+J~Sola and J~Sevilla.
+\newblock Importance of input data normalization for the application of neural
+  networks to complex industrial problems.
+\newblock {\em Nuclear Science, IEEE Transactions on}, 44(3):1464--1468, 1997.
+
+\bibitem{ueda2010hmm}
+Yushi Ueda, Yuuki Uchiyama, Takuya Nishimoto, Nobutaka Ono, and Shigeki
+  Sagayama.
+\newblock Hmm-based approach for automatic chord detection using refined
+  acoustic features.
+\newblock In {\em Acoustics Speech and Signal Processing (ICASSP), 2010 IEEE
+  International Conference on}, pages 5518--5521. IEEE, 2010.
+
+\end{thebibliography}

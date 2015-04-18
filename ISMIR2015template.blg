@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ISMIR2015template.aux
+The style file: plain.bst
+Database file #1: ISMIR2015template.bib
+Warning--empty journal in cho2011feature
+Warning--empty year in lee2009unsupervised
+Warning--empty journal in povey2011kaldi
+You've used 22 entries,
+            2118 wiz_defined-function locations,
+            617 strings with 8592 characters,
+and the built_in function-call counts, 9675 in all, are:
+= -- 982
+> -- 455
+< -- 17
++ -- 181
+- -- 156
+* -- 645
+:= -- 1485
+add.period$ -- 76
+call.type$ -- 22
+change.case$ -- 142
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 399
+empty$ -- 739
+format.name$ -- 156
+if$ -- 2127
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 22
+newline$ -- 113
+num.names$ -- 44
+pop$ -- 180
+preamble$ -- 1
+purify$ -- 120
+quote$ -- 0
+skip$ -- 314
+stack$ -- 0
+substring$ -- 622
+swap$ -- 155
+text.length$ -- 17
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 88
+warning$ -- 3
+while$ -- 93
+width$ -- 24
+write$ -- 250
+(There were 3 warnings)

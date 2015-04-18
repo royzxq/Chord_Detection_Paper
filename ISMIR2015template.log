@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  18 APR 2015 12:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  18 APR 2015 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -146,6 +146,27 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count103
 \@thisrulewidth=\dimen126
 )
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
+\MT@toks=\toks20
+\MT@count=\count104
+LaTeX Info: Redefining \textls on input line 766.
+\MT@outer@kern=\dimen127
+LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
+\MT@listname@count=\count105
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip46
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
+))
 (./ISMIR2015template.aux)
 \openout1 = `ISMIR2015template.aux'.
 
@@ -168,17 +189,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count104
-\scratchdimen=\dimen127
+\scratchcounter=\count106
+\scratchdimen=\dimen128
 \scratchbox=\box28
-\nofMPsegments=\count105
-\nofMParguments=\count106
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count107
-\MPscratchDim=\dimen128
-\MPnumerator=\count108
-\makeMPintoPDFobject=\count109
-\everyMPtoPDFconversion=\toks21
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen129
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -227,8 +248,27 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+LaTeX Info: Redefining \microtypecontext on input line 45.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 47.
@@ -236,6 +276,11 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 47.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
+Package microtype Info: Loading generic settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
 Overfull \hbox (12.0pt too wide) in paragraph at lines 47--47
  [][] 
  []
@@ -256,268 +301,67 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
-
-Overfull \hbox (4.0653pt too wide) in paragraph at lines 50--51
-\OT1/ptm/m/n/10 meth-ods and con-fig-u-ra-tions, in-clud-ing in-put pre-process
-ing,
- []
-
-
-LaTeX Warning: Citation `fujishima1999realtime' on page 1 undefined on input li
-ne 54.
-
-
-LaTeX Warning: Citation `hinton2012deep' on page 1 undefined on input line 56.
-
-
-LaTeX Warning: Citation `lee2009unsupervised' on page 1 undefined on input line
- 56.
-
-
-LaTeX Warning: Citation `battenberg2012analyzing' on page 1 undefined on input 
-line 56.
-
-
-LaTeX Warning: Citation `humphrey2012moving' on page 1 undefined on input line 
-56.
-
-
-LaTeX Warning: Citation `hamel2010learning' on page 1 undefined on input line 5
-6.
-
-
-Overfull \hbox (3.40497pt too wide) in paragraph at lines 56--57
-\OT1/ptm/m/n/10 recog-ni-tion with deep learn-ing was able to out-per-form stat
-e-
- []
-
-
-Overfull \hbox (13.4255pt too wide) in paragraph at lines 58--60
-[]\OT1/ptm/m/n/10 In this work, we in-ves-ti-gate Deep Neu-ral Net-works (DNNs)
-
- []
-
-
-Overfull \hbox (9.71461pt too wide) in paragraph at lines 58--60
-\OT1/ptm/m/n/10 train-ing sce-nar-ios (see Sect. 3.3[]), ar-chi-tec-tures (see 
-Sect. 3.4[]),
- []
-
-
-Overfull \hbox (15.86444pt too wide) in paragraph at lines 72--73
-\OT1/ptm/m/n/10 used for this pur-pose: Re-stricted Boltz-mann Ma-chines (RBMs)
-
- []
-
-
-LaTeX Warning: Citation `hinton2006fast' on page 1 undefined on input line 74.
-
-
-Overfull \hbox (7.64525pt too wide) in paragraph at lines 74--75
-[]\OT1/ptm/m/n/10 Since Hin-ton pro-posed a fast learn-ing al-go-rithm for DBNs
-
- []
-
-
-LaTeX Warning: Citation `lecun1995convolutional' on page 1 undefined on input l
-ine 76.
-
-
-LaTeX Warning: Citation `norouzi2009stacks' on page 1 undefined on input line 7
-6.
-
-<neuralnet.png, id=2, 860.013pt x 303.0522pt>
-File: neuralnet.png Graphic file (type png)
- <use neuralnet.png>
-Package pdftex.def Info: neuralnet.png used on input line 79.
-(pdftex.def)             Requested size: 233.31259pt x 82.21361pt.
-
-
-LaTeX Warning: Citation `grezl2007probabilistic' on page 1 undefined on input l
-ine 83.
-
-
-Overfull \hbox (1.41478pt too wide) in paragraph at lines 76--84
-\OT1/ptm/m/n/10 tional Neu-ral Net-works (CNNs) to im-ages as well as speech
- []
-
-[1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
  <./figs/cc_by.pdf>]
-
-LaTeX Warning: Citation `lee2009unsupervised' on page 2 undefined on input line
- 85.
-
-
-LaTeX Warning: Citation `hamel2010learning' on page 2 undefined on input line 8
-5.
-
-
-LaTeX Warning: Citation `battenberg2012analyzing' on page 2 undefined on input 
-line 85.
-
-
-LaTeX Warning: Citation `boulanger2013audio' on page 2 undefined on input line 
-85.
-
-
-LaTeX Warning: Citation `humphrey2012rethinking' on page 2 undefined on input l
-ine 85.
-
-
-LaTeX Warning: Citation `humphrey2012learning' on page 2 undefined on input lin
-e 85.
-
-<bottleneck.jpeg, id=18, 371.3875pt x 136.51pt>
+<bottleneck.jpeg, id=16, 371.3875pt x 136.51pt>
 File: bottleneck.jpeg Graphic file (type jpg)
  <use bottleneck.jpeg>
-Package pdftex.def Info: bottleneck.jpeg used on input line 88.
+Package pdftex.def Info: bottleneck.jpeg used on input line 85.
 (pdftex.def)             Requested size: 233.31259pt x 85.76012pt.
 
-
-LaTeX Warning: Citation `kawakami2000hidden' on page 2 undefined on input line 
-93.
-
-
-LaTeX Warning: Citation `fujishima1999realtime' on page 2 undefined on input li
-ne 93.
-
-
-LaTeX Warning: Citation `ni2012using' on page 2 undefined on input line 93.
-
-
-LaTeX Warning: Citation `cho2013mirex' on page 2 undefined on input line 93.
-
-
-LaTeX Warning: Citation `sola1997importance' on page 2 undefined on input line 
-106.
-
-
-Overfull \hbox (8.81557pt too wide) in paragraph at lines 106--107
-\OT1/ptm/m/n/10 frequency trans-for-ma-tion for au-dio, where the win-dow lengt
-h
- []
-
-
-Overfull \hbox (8.53488pt too wide) in paragraph at lines 106--107
-\OT1/ptm/m/n/10 of dis-crete fourier trans-form has a fixed ra-tio with the ``p
-itch".
- []
-
-<timesplice.png, id=19, 306.14375pt x 166.6225pt>
+<timesplice.png, id=17, 306.14375pt x 166.6225pt>
 File: timesplice.png Graphic file (type png)
  <use timesplice.png>
-Package pdftex.def Info: timesplice.png used on input line 114.
+Package pdftex.def Info: timesplice.png used on input line 111.
 (pdftex.def)             Requested size: 233.31259pt x 126.98273pt.
- [2 <./neuralnet.png> <./bottleneck.jpeg> <./timesplice.png>]
-<CNN.png, id=26, 457.71pt x 193.72375pt>
+ [2 <./bottleneck.jpeg> <./timesplice.png>] <CNN.png, id=27, 457.71pt x 193.723
+75pt>
 File: CNN.png Graphic file (type png)
- <use CNN.png>
-Package pdftex.def Info: CNN.png used on input line 139.
+
+<use CNN.png>
+Package pdftex.def Info: CNN.png used on input line 136.
 (pdftex.def)             Requested size: 233.31259pt x 98.74754pt.
-
-
-LaTeX Warning: Citation `povey2011kaldi' on page 3 undefined on input line 158.
-
-
-
-Overfull \hbox (2.39516pt too wide) in paragraph at lines 163--164
-\OT1/ptm/m/n/10 ex-tracted from au-dio sig-nals as the ob-ser-va-tions, and cho
-rds
- []
-
-
-Overfull \hbox (10.63556pt too wide) in paragraph at lines 163--164
-\OT1/ptm/m/n/10 mod-i-fied HMMs such as er-godic HMMs and key-independent
- []
-
-[3 <./CNN.png>]
-Overfull \hbox (11.0746pt too wide) in paragraph at lines 176--177
-\OT1/ptm/m/n/10 songs from the RWC Pop dataset, 18 songs from the Zwielicht
- []
-
-
-Overfull \hbox (3.84607pt too wide) in paragraph at lines 176--177
-\OT1/ptm/m/n/10 mixed to monau-ral and down-sampled to 11025 Hz. Ground
- []
-
-
-LaTeX Warning: Citation `grezl2007probabilistic' on page 4 undefined on input l
-ine 197.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (0.57468pt too wide) in paragraph at lines 216--217
-\OT1/ptm/m/n/10 fer-ent fil-ters in pre-processing. The first type is lin-ear p
-hase
- []
-
-[4] <filters.png, id=41, 362.7954pt x 218.2554pt>
+ [3 <./CNN.png>] [4]
+<filters.png, id=39, 362.7954pt x 218.2554pt>
 File: filters.png Graphic file (type png)
  <use filters.png>
-Package pdftex.def Info: filters.png used on input line 224.
+Package pdftex.def Info: filters.png used on input line 221.
 (pdftex.def)             Requested size: 233.31259pt x 140.36235pt.
 
-Overfull \hbox (5.7449pt too wide) in paragraph at lines 233--239
+Overfull \hbox (5.7449pt too wide) in paragraph at lines 230--236
 [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Citation `cho2011feature' on page 5 undefined on input line 246.
-
-
-
-Overfull \hbox (3.2252pt too wide) in paragraph at lines 245--247
-\OT1/ptm/m/n/10 egy beats DBNs and DNNs train-ing strate-gies with-out much
- []
-
-
-Underfull \vbox (badness 1874) has occurred while \output is active []
-
- [5 <./filters.png>]
-No file ISMIR2015template.bbl.
-[6
-
-] (./ISMIR2015template.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[5 <./filters.png>] (./ISMIR2015template.bbl) [6] (./ISMIR2015template.aux) ) 
 Here is how much of TeX's memory you used:
- 2498 strings out of 493315
- 33929 string characters out of 6137904
- 102459 words of memory out of 5000000
- 5896 multiletter control sequences out of 15000+600000
- 24639 words of font info for 51 fonts, out of 8000000 for 9000
+ 4265 strings out of 493315
+ 63160 string characters out of 6137904
+ 159949 words of memory out of 5000000
+ 7453 multiletter control sequences out of 15000+600000
+ 33238 words of font info for 174 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,15n,23p,1282b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
-live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
-13/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/te
-xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist
-/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on ISMIR2015template.pdf (6 pages, 767990 bytes).
+ 38i,15n,35p,1227b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/
+usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
+013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2013/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fon
+ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on ISMIR2015template.pdf (6 pages, 358533 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
+ 86 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23578 words of extra memory for PDF output out of 24883 (max. 10000000)
 
