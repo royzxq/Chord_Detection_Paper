@@ -157,7 +157,7 @@ The ideas of splicing and convolution can combined, as exemplified by Fig.~\ref{
 %We call this kind of processing as ``splice filtering. 
  
 \subsection{Training}\label{sec:train}
-It is impractical to train DNNs directly with back propagation using gradient decent due to their deep structure. Therefore, the network is usually initialized by an unsupervised pre-training step. As our network consists of RBMs, we can use Gibbs sampling algorithms for training. The objective is to retain as much information as possible between input and output. 
+It is impractical to train DNNs directly with back propagation using gradient decent due to their deep structure. Therefore, the network is usually initialized by an unsupervised pre-training step. As our network consists of RBMs, Gibbs sampling can be used for training. The objective is to retain as much information as possible between input and output. 
 
 The computation between layers can be represented as:
 \begin{equation}\label{dbn}
@@ -182,10 +182,13 @@ HMMs are, as pointed out above, a standard classifier for automatic chord detect
 Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task.\footnote{add references} In this work we are mostly interested in the performance comparison between different features, so a simple first-order HMM is used. 
 Given the probabilistic property of softmax output layer, we can use it directly as emission probabilities in the context of HMMs. Therefore, there is no need to train the HMM using, e.g., the commonly used Baum-Welch algorithm. Instead, the histogram of each class in our training is used as initial probabilities, and the bigram of chord transitions is used to compute the transition probabilities. Finally, we employ the Viterbi decoding algorithm to find the globally optimal chord sequence. 
 
-\section{Evaluation}
+\section{Evaluation procedure}
 \subsection{Dataset}
+describe datasets with references
 \subsection{Methodology}
 training set, test set validation etc.
+
+number and type of evaluated chord labels
 \subsection{Evaluation Metric}
 We use the same evaluation metric as MIREX 2013 in the audio chord detection task. Chord symbol recall (CSR) and weighted chord symbol recall (WCSR) are used to estimate how well the predicted chords match the ground truth. CSR is defined as the total duration of segments where the predictions match the ground truth divided bythe total duration of the song, formulated as in \eqnref{csr}. WCSR is to weight CSR with the songs' length.  
 \begin{equation}\label{csr}
@@ -262,7 +265,7 @@ Learning Targets & Pre-processing   & \begin{tabular}[c]{@{}c@{}}Post-\\ process
 \end{table}
 As seen from the results, learning pitches does not really work. There should be several potential reasons. Even though we believe the idea of decomposing chords will bring some benefits, some practical issue may impact such benefits: firstly, multi-target learning is relatively more difficult for the model per se to train. Since in our implementation of multi-target training, we assign each target a equal posterior, which is less obvious than the single target for models to learn. Second, in the real audio files, some notes are occasionally removed from or added into a chord, which could make the pitch ground truth inaccurate. Therefore, we give up this idea in our final evaluation. 
 
-\section{Results and Discussion}
+\section{Results}
 \subsection{Results}
 From previous discussions and comparisons, several settings show the most promise. So we decide to use them as the default configuration in our final evaluations: bottleneck structure outperforms the common structure both in accuracy and time-complexity; DBN-DNNs training strategy beats DBNs and DNNs training strategies without much surprise; splice filtering similar to what CNNs do, generally speaking, yields a better result than the others; finally, Viterbi decoding as post classifiers are more appropriate for this task due to the dynamic properties of chords.  \\
 In previous published results \cite{cho2011feature} on the similar dataset is around 80\%. We present the mean accuracy of 3 fold cross-validation obtained on our 311-piece dataset at the major/minor level (total 25 classes). We compare our results with Chordino approach on our dataset, though in an unfair way, as baseline system. Noting that Chordino system can not only detect major/minor scale, it can detect as much as 120 different chords. Thus we map the Chordino results into our major/minor scale. In this mapping, due to the different chord annotation rules, we could make mistakes through imperfect parsing. The results are listed in table 4, in which Type1 pre-processing is to splice the 5-order FIR low-pass filter and extension filters; whereas Type2 pre-processing is to splice the single-pole IIR low-pass filter and extension filters. 
@@ -283,6 +286,7 @@ Proposed DBN-DNNs & Type2          & 0.919   \\ \bottomrule
 \subsection{Discussion}
 We presented a comprehensive system for chord detection, that is competitive with the existing start-of-the-art systems. Our DBN-DNNs model can learn a high-level probabilistic representations for chords. The Viterbi algorithm is applied to find a global optimal path based on the output of our DBN-DNNs as the predicted chord sequence. Furthermore, the bottleneck structure have a stronger learning ability for chords information than the common architecture. By the process of ``encoding" and ``decoding", the networks retain the ``essential information" but discard the redundant ones. The results also indicate that applying pre-processing will significantly increase the accuracy. That's because it will introduce temporal continuity and dynamics into feature representation. Intuitively, dynamic programming algorithms such as Viterbi decoding outperforms the static classifiers such as SVMs due to the dynamic property of chords. Therefore introducing transition probability makes more sense. 
 
+\section{Conclusion}
 
 
 \bibliography{ISMIR2015template}
