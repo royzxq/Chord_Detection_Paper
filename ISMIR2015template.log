@@ -1,0 +1,523 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  18 APR 2015 12:11
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ISMIR2015template.tex
+(./ISMIR2015template.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./ismir.sty)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen114
+\lightrulewidth=\dimen115
+\cmidrulewidth=\dimen116
+\belowrulesep=\dimen117
+\belowbottomsep=\dimen118
+\aboverulesep=\dimen119
+\abovetopsep=\dimen120
+\cmidrulesep=\dimen121
+\cmidrulekern=\dimen122
+\defaultaddspace=\dimen123
+\@cmidla=\count100
+\@cmidlb=\count101
+\@aboverulesep=\dimen124
+\@belowrulesep=\dimen125
+\@thisruleclass=\count102
+\@lastruleclass=\count103
+\@thisrulewidth=\dimen126
+)
+(./ISMIR2015template.aux)
+\openout1 = `ISMIR2015template.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count104
+\scratchdimen=\dimen127
+\scratchbox=\box28
+\nofMPsegments=\count105
+\nofMParguments=\count106
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count107
+\MPscratchDim=\dimen128
+\MPnumerator=\count108
+\makeMPintoPDFobject=\count109
+\everyMPtoPDFconversion=\toks21
+) (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 47.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (12.0pt too wide) in paragraph at lines 47--47
+ [][] 
+ []
+
+<figs/cc_by.pdf, id=1, 121.45375pt x 43.16125pt>
+File: figs/cc_by.pdf Graphic file (type pdf)
+ <use figs/cc_by.pdf>
+Package pdftex.def Info: figs/cc_by.pdf used on input line 47.
+(pdftex.def)             Requested size: 36.02869pt x 12.80365pt.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 47.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+
+Overfull \hbox (4.0653pt too wide) in paragraph at lines 50--51
+\OT1/ptm/m/n/10 meth-ods and con-fig-u-ra-tions, in-clud-ing in-put pre-process
+ing,
+ []
+
+
+LaTeX Warning: Citation `fujishima1999realtime' on page 1 undefined on input li
+ne 54.
+
+
+LaTeX Warning: Citation `hinton2012deep' on page 1 undefined on input line 56.
+
+
+LaTeX Warning: Citation `lee2009unsupervised' on page 1 undefined on input line
+ 56.
+
+
+LaTeX Warning: Citation `battenberg2012analyzing' on page 1 undefined on input 
+line 56.
+
+
+LaTeX Warning: Citation `humphrey2012moving' on page 1 undefined on input line 
+56.
+
+
+LaTeX Warning: Citation `hamel2010learning' on page 1 undefined on input line 5
+6.
+
+
+Overfull \hbox (3.40497pt too wide) in paragraph at lines 56--57
+\OT1/ptm/m/n/10 recog-ni-tion with deep learn-ing was able to out-per-form stat
+e-
+ []
+
+
+Overfull \hbox (13.4255pt too wide) in paragraph at lines 58--60
+[]\OT1/ptm/m/n/10 In this work, we in-ves-ti-gate Deep Neu-ral Net-works (DNNs)
+
+ []
+
+
+Overfull \hbox (9.71461pt too wide) in paragraph at lines 58--60
+\OT1/ptm/m/n/10 train-ing sce-nar-ios (see Sect. 3.3[]), ar-chi-tec-tures (see 
+Sect. 3.4[]),
+ []
+
+
+Overfull \hbox (15.86444pt too wide) in paragraph at lines 72--73
+\OT1/ptm/m/n/10 used for this pur-pose: Re-stricted Boltz-mann Ma-chines (RBMs)
+
+ []
+
+
+LaTeX Warning: Citation `hinton2006fast' on page 1 undefined on input line 74.
+
+
+Overfull \hbox (7.64525pt too wide) in paragraph at lines 74--75
+[]\OT1/ptm/m/n/10 Since Hin-ton pro-posed a fast learn-ing al-go-rithm for DBNs
+
+ []
+
+
+LaTeX Warning: Citation `lecun1995convolutional' on page 1 undefined on input l
+ine 76.
+
+
+LaTeX Warning: Citation `norouzi2009stacks' on page 1 undefined on input line 7
+6.
+
+<neuralnet.png, id=2, 860.013pt x 303.0522pt>
+File: neuralnet.png Graphic file (type png)
+ <use neuralnet.png>
+Package pdftex.def Info: neuralnet.png used on input line 79.
+(pdftex.def)             Requested size: 233.31259pt x 82.21361pt.
+
+
+LaTeX Warning: Citation `grezl2007probabilistic' on page 1 undefined on input l
+ine 83.
+
+
+Overfull \hbox (1.41478pt too wide) in paragraph at lines 76--84
+\OT1/ptm/m/n/10 tional Neu-ral Net-works (CNNs) to im-ages as well as speech
+ []
+
+[1{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+
+ <./figs/cc_by.pdf>]
+
+LaTeX Warning: Citation `lee2009unsupervised' on page 2 undefined on input line
+ 85.
+
+
+LaTeX Warning: Citation `hamel2010learning' on page 2 undefined on input line 8
+5.
+
+
+LaTeX Warning: Citation `battenberg2012analyzing' on page 2 undefined on input 
+line 85.
+
+
+LaTeX Warning: Citation `boulanger2013audio' on page 2 undefined on input line 
+85.
+
+
+LaTeX Warning: Citation `humphrey2012rethinking' on page 2 undefined on input l
+ine 85.
+
+
+LaTeX Warning: Citation `humphrey2012learning' on page 2 undefined on input lin
+e 85.
+
+<bottleneck.jpeg, id=18, 371.3875pt x 136.51pt>
+File: bottleneck.jpeg Graphic file (type jpg)
+ <use bottleneck.jpeg>
+Package pdftex.def Info: bottleneck.jpeg used on input line 88.
+(pdftex.def)             Requested size: 233.31259pt x 85.76012pt.
+
+
+LaTeX Warning: Citation `kawakami2000hidden' on page 2 undefined on input line 
+93.
+
+
+LaTeX Warning: Citation `fujishima1999realtime' on page 2 undefined on input li
+ne 93.
+
+
+LaTeX Warning: Citation `ni2012using' on page 2 undefined on input line 93.
+
+
+LaTeX Warning: Citation `cho2013mirex' on page 2 undefined on input line 93.
+
+
+LaTeX Warning: Citation `sola1997importance' on page 2 undefined on input line 
+106.
+
+
+Overfull \hbox (8.81557pt too wide) in paragraph at lines 106--107
+\OT1/ptm/m/n/10 frequency trans-for-ma-tion for au-dio, where the win-dow lengt
+h
+ []
+
+
+Overfull \hbox (8.53488pt too wide) in paragraph at lines 106--107
+\OT1/ptm/m/n/10 of dis-crete fourier trans-form has a fixed ra-tio with the ``p
+itch".
+ []
+
+<timesplice.png, id=19, 306.14375pt x 166.6225pt>
+File: timesplice.png Graphic file (type png)
+ <use timesplice.png>
+Package pdftex.def Info: timesplice.png used on input line 114.
+(pdftex.def)             Requested size: 233.31259pt x 126.98273pt.
+ [2 <./neuralnet.png> <./bottleneck.jpeg> <./timesplice.png>]
+<CNN.png, id=26, 457.71pt x 193.72375pt>
+File: CNN.png Graphic file (type png)
+ <use CNN.png>
+Package pdftex.def Info: CNN.png used on input line 139.
+(pdftex.def)             Requested size: 233.31259pt x 98.74754pt.
+
+
+LaTeX Warning: Citation `povey2011kaldi' on page 3 undefined on input line 158.
+
+
+
+Overfull \hbox (2.39516pt too wide) in paragraph at lines 163--164
+\OT1/ptm/m/n/10 ex-tracted from au-dio sig-nals as the ob-ser-va-tions, and cho
+rds
+ []
+
+
+Overfull \hbox (10.63556pt too wide) in paragraph at lines 163--164
+\OT1/ptm/m/n/10 mod-i-fied HMMs such as er-godic HMMs and key-independent
+ []
+
+[3 <./CNN.png>]
+Overfull \hbox (11.0746pt too wide) in paragraph at lines 176--177
+\OT1/ptm/m/n/10 songs from the RWC Pop dataset, 18 songs from the Zwielicht
+ []
+
+
+Overfull \hbox (3.84607pt too wide) in paragraph at lines 176--177
+\OT1/ptm/m/n/10 mixed to monau-ral and down-sampled to 11025 Hz. Ground
+ []
+
+
+LaTeX Warning: Citation `grezl2007probabilistic' on page 4 undefined on input l
+ine 197.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (0.57468pt too wide) in paragraph at lines 216--217
+\OT1/ptm/m/n/10 fer-ent fil-ters in pre-processing. The first type is lin-ear p
+hase
+ []
+
+[4] <filters.png, id=41, 362.7954pt x 218.2554pt>
+File: filters.png Graphic file (type png)
+ <use filters.png>
+Package pdftex.def Info: filters.png used on input line 224.
+(pdftex.def)             Requested size: 233.31259pt x 140.36235pt.
+
+Overfull \hbox (5.7449pt too wide) in paragraph at lines 233--239
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Citation `cho2011feature' on page 5 undefined on input line 246.
+
+
+
+Overfull \hbox (3.2252pt too wide) in paragraph at lines 245--247
+\OT1/ptm/m/n/10 egy beats DBNs and DNNs train-ing strate-gies with-out much
+ []
+
+
+Underfull \vbox (badness 1874) has occurred while \output is active []
+
+ [5 <./filters.png>]
+No file ISMIR2015template.bbl.
+[6
+
+] (./ISMIR2015template.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2498 strings out of 493315
+ 33929 string characters out of 6137904
+ 102459 words of memory out of 5000000
+ 5896 multiletter control sequences out of 15000+600000
+ 24639 words of font info for 51 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 38i,15n,23p,1282b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist
+/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
+e1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on ISMIR2015template.pdf (6 pages, 767990 bytes).
+PDF statistics:
+ 88 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+
