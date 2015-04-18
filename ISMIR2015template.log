@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  18 APR 2015 12:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  18 APR 2015 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -306,62 +306,72 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 
 
  <./figs/cc_by.pdf>]
-<bottleneck.jpeg, id=16, 371.3875pt x 136.51pt>
-File: bottleneck.jpeg Graphic file (type jpg)
- <use bottleneck.jpeg>
-Package pdftex.def Info: bottleneck.jpeg used on input line 85.
-(pdftex.def)             Requested size: 233.31259pt x 85.76012pt.
+<bottleneck.png, id=16, 404.51125pt x 242.9075pt>
+File: bottleneck.png Graphic file (type png)
+ <use bottleneck.png>
+Package pdftex.def Info: bottleneck.png used on input line 85.
+(pdftex.def)             Requested size: 233.31259pt x 140.10437pt.
 
-<timesplice.png, id=17, 306.14375pt x 166.6225pt>
-File: timesplice.png Graphic file (type png)
- <use timesplice.png>
-Package pdftex.def Info: timesplice.png used on input line 111.
-(pdftex.def)             Requested size: 233.31259pt x 126.98273pt.
- [2 <./bottleneck.jpeg> <./timesplice.png>] <CNN.png, id=27, 457.71pt x 193.723
-75pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<flowchart.png, id=18, 319.4334pt x 312.2064pt>
+File: flowchart.png Graphic file (type png)
+ <use flowchart.png>
+Package pdftex.def Info: flowchart.png used on input line 107.
+(pdftex.def)             Requested size: 233.31259pt x 228.0374pt.
+ [2 <./bottleneck.png> <./flowchart.png>] <CNN.png, id=25, 483.2454pt x 138.276
+6pt>
 File: CNN.png Graphic file (type png)
 
 <use CNN.png>
-Package pdftex.def Info: CNN.png used on input line 136.
-(pdftex.def)             Requested size: 233.31259pt x 98.74754pt.
- [3 <./CNN.png>] [4]
-<filters.png, id=39, 362.7954pt x 218.2554pt>
+Package pdftex.def Info: CNN.png used on input line 140.
+(pdftex.def)             Requested size: 233.31259pt x 66.76022pt.
+ [3 <./CNN.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4] <filters.png, id=40, 362.7954pt x 218.2554pt>
 File: filters.png Graphic file (type png)
  <use filters.png>
-Package pdftex.def Info: filters.png used on input line 221.
+Package pdftex.def Info: filters.png used on input line 224.
 (pdftex.def)             Requested size: 233.31259pt x 140.36235pt.
 
-Overfull \hbox (5.7449pt too wide) in paragraph at lines 230--236
+Overfull \hbox (5.7449pt too wide) in paragraph at lines 233--239
 [][] 
  []
 
-[5 <./filters.png>] (./ISMIR2015template.bbl) [6] (./ISMIR2015template.aux) ) 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./filters.png>] (./ISMIR2015template.bbl [6]) [7
+
+] (./ISMIR2015template.aux) ) 
 Here is how much of TeX's memory you used:
  4265 strings out of 493315
- 63160 string characters out of 6137904
- 159949 words of memory out of 5000000
- 7453 multiletter control sequences out of 15000+600000
+ 63161 string characters out of 6137904
+ 160957 words of memory out of 5000000
+ 7454 multiletter control sequences out of 15000+600000
  33238 words of font info for 174 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,15n,35p,1227b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/
-usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2
-013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2013/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2013/texmf-dist/fon
-ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
-rw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/u
-tmri8a.pfb>
-Output written on ISMIR2015template.pdf (6 pages, 358533 bytes).
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvip
+s/base/8r.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+</usr/local/texlive/2013/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texliv
+e/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ISMIR2015template.pdf (7 pages, 345501 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23578 words of extra memory for PDF output out of 24883 (max. 10000000)
 

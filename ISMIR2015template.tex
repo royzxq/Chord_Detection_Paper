@@ -82,7 +82,7 @@ Modifications of the network architecture obviously result in different results.
 Recently, more researchers investigated deep learning in the context of MIR. Lee et al.\ pioneered the application of convolutional deep learning for audio feature learning \cite{lee2009unsupervised}. Hamel et al.\ used the features learned from music with a DBN for both music genre classification and music auto-tagging \cite{hamel2010learning}; their system was successful in MIREX 2011 with top-ranked results. Battenberg employed a conditional DBN to analyze drum patterns \cite{battenberg2012analyzing}. The use of deep architectures for chord detections, however, has not yet been explored, although modern neural networks have been employed in this field. For instance, Boulanger et al.\ investigated recurrent neural networks \cite{boulanger2013audio} and Humphrey has explored CNNs \cite{humphrey2012rethinking,humphrey2012learning}. While they also used the concept of pre-training, their architectures have only two or 3 layers and thus cannot be called ``deep''.
 \begin{figure}
  \centerline{\framebox{
- \includegraphics[width=\columnwidth]{bottleneck.jpeg}}}
+ \includegraphics[width=\columnwidth]{bottleneck}}}
  \caption{Bottleneck Neural Network Architecture}
  \label{fig:bottleneck}
 \end{figure}
@@ -98,29 +98,32 @@ The basic buildings blocks of most modern approaches to chord detection can be t
 % %\label{fig:example}
 %\end{figure}
 
-\section{DBN-DNN}
+\section{Methods}
 \subsection{Input Representations}
-Constant Q transform (CQT) is perceptually inspired time-frequency transformation for audio, where the window length of discrete fourier transform has a fixed ratio with the ``pitch". CQT can retain mostly all the pitch information as well as lower the dimension of inputs. Audio files are first downsampled to 11025Hz. We implemented CQT as a filterbank of Gabor filters, spaced at 36 bins per octave, ie. 3 bins per semitone, yielding 180 bins spanning from 110 Hz to 3520 Hz. We apply PCA to reduce the redundant dimension as well as to decorrelate each dimension, and apply Z-Score normalization\cite{sola1997importance}. 
+Constant Q transform (CQT) is perceptually inspired time-frequency transformation for audio, where the window length of discrete fourier transform has a fixed ratio with the ``pitch". CQT can retain mostly all the pitch information as well as lower the dimension of inputs. Audio files are first downsampled to 11025Hz. We implemented CQT as a filterbank of Gabor filters, spaced at 36 bins per octave, ie. 3 bins per semitone, yielding 180 bins spanning from 110 Hz to 3520 Hz. We apply PCA to reduce the redundant dimension as well as to decorrelate each dimension, and apply Z-Score normalization\cite{sola1997importance}. The flow chart of the whole system is shown in Fig.~\ref{fig:flowchart}.
 
+\begin{figure}
+ \centerline{\framebox{
+ \includegraphics[width=\columnwidth]{flowchart.png}}}
+ \caption{System flow chart}
+ \label{fig:flowchart}
+\end{figure}
 \subsection{Pre-Processing}\label{sec:pre-proc}
 Since chords are dynamic signals changing along with the time, and the current state has relationship between both previous states and future states. In order to extract these relations and information within temporal neighbors, we apply several pre-processing approaches to the input representation. 
 \subsubsection{Time Splicing}
-Time splicing is to splice the current frame with a few frames on both side, yielding a larger frame as shown in figure 3. For example, in the figure, assuming there are 7 frames in a piece. If we apply 1 time splicing, which means we splice the current frame with previous 1 frame and next 1 frame together. For 4th frame, we group 3rd, 4th and 5th frame and splice them into one bigger frame, which is the new representation for the 4th frame, the same operation will be applied on the 5th frame. Therefore there will be some overlap between neighboring frames. We conduct such operation along over all frames in each piece with different splice amount. 
-\begin{figure}
- \centerline{\framebox{
- \includegraphics[width=\columnwidth]{timesplice}}}
- \caption{Illustration for time splicing}
- %\label{fig:example}
-\end{figure}
+Time splicing is to splice the current frame with a few frames on both side, yielding a larger frame. For example, assuming there are 7 frames in a piece. If we apply 1 time splicing, which means we splice the current frame with previous 1 frame and next 1 frame together. For 4th frame, we group 3rd, 4th and 5th frame and splice them into one bigger frame, which is the new representation for the 4th frame, the same operation will be applied on the 5th frame. Therefore there will be some overlap between neighboring frames. We conduct such operation along over all frames in each piece with different splice amount. 
+
 
 \subsubsection{Convolution}
-Though we don't use CNNs, we employ the similar idea as CNNs. Essentially CNNs are automatically add one or several convolutional layers at the beginning of neural networks. The convolutional layer can be interpreted as a linear filter that conduct a convolution on the input signal plus a non-linear transformation, sometimes combined with pooling operation as well, as in \eqnref{Covulution}.
+Though we don't use CNNs, we employ the similar idea as CNNs. Essentially CNNs are automatically add one or several convolutional layers at the beginning of neural networks. The convolutional layer can be interpreted as a linear filter that conduct a convolution on the input signal plus a non-linear transformation, sometimes combined with pooling operation as well, as in \ref{Covulution}.
 \begin{equation}\label{Covulution}
 Y = pool(sigm(K \ast X + B))
 \end{equation}  
 Where $Y$ is the output of a convolutional layer, $K$ is the linear kernel filter, $X$ is the input, $B$ is the bias, $sigm()$ is a non-linear transform, $pool()$ is a down-sampling operation. The core transformation is the $\ast$ operation, which is to do the convolution operation between filters and input representation. 
-Instead of training the filters automatically, we can make use of the prior knowledge to design the filters manually. In the case of chord detection, given we mainly want to extract time information by convolution, so we design time domain filters. \\
-The first type of our filter is low pass filter. We employ a simple single pole low pass filter due to its easy parameter configuration. Given that our system is not designed for real-time processing, we can use the ``filtfilt" techniques to ensure the filter has linear phase response. A ``filtfilt" filter is centered around the current frame in time domain. \\
+Instead of training the filters automatically, we can make use of the prior knowledge to design the filters manually. In the case of chord detection, given we mainly want to extract time information by convolution, so we design time domain filters. 
+
+The first type of our filter is low pass filter. We employ a simple single pole low pass filter due to its easy parameter configuration. Given that our system is not designed for real-time processing, we can use the ``filtfilt" techniques to ensure the filter has linear phase response. A ``filtfilt" filter is centered around the current frame in time domain. 
+
 Under the assumption that the frame that is located in the middle of a chord is way more obvious and easier to be detected than the frame that is located at the boundary of a chord, we also design another two types of filters, both of which have exponential decay shaped impulse response, the different equation as in \eqnref{filter1} \eqnref{filter2}. 
 \begin{equation}\label{filter1}
 y_{1}(n) = \sum_{k=1}^N a^{-k+1} x(n-N+k)
@@ -129,7 +132,8 @@ y_{1}(n) = \sum_{k=1}^N a^{-k+1} x(n-N+k)
 y_{2}(n) = \sum_{k=1}^N a^{-k+1} x(n+N-k)
 \end{equation} 
 Where $a$ is the exponential base, $N$ is the filter length. 
-These filters are not centered around the current frame anymore, but shifted to either side. Their impulse response are symmetric, one is to take past frames into consideration, while the other is to take next frames into consideration. We call these filters as ``extension filters".  \\
+These filters are not centered around the current frame anymore, but shifted to either side. Their impulse response are symmetric, one is to take past frames into consideration, while the other is to take next frames into consideration. We call these filters as ``extension filters".  
+
 In a further processing, we combine the ideas of time splicing and convolution: we either conduct time splicing on the output of the low pass filter, or splice the output of different filters together, as in figure 4.
 \begin{figure}
  \centerline{\framebox{
@@ -175,17 +179,16 @@ Our dataset is collected from a variety of different sources, yielding a 311-pie
 C_{majmin} \subset {N} \cup S \times {maj,min}
 \end{equation}
 Where S represents 12 pitch classed and N is the unknown chord label, yielding totally 25 chord classes. Evaluation is based on WCSR, which is proposed in the previous section. Since we only map the ground truth into major and minor scale, we consider the chords other than triad major, triad minor, seventh major, seventh minor to be N chords. For instance, G:maj and G:maj7 are all mapped to `Gmaj'; G:dim and G:6 are all mapped to `N'. 
-\subsection{DBNs vs. DNNs}
-There are three scenarios for training: only training DBNs; only training DNNs; and combined DBNs and DNNs. For comparison, we do not apply any pre-processing to the input data, ie. the input data is the audio CQT followed by PCA. In DBNs scenario, since it is a pure unsupervised training, we take the output of bottleneck layer as output, and use SVMs as post classifiers. Whereas we train the networks in a pure supervised manner in DNNs scenario, in which we directly use back propagation to train the neural networks. Viterbi decoding is used for post processing. In the last case of DBN-DNN, we firstly employ RBMs to build up DBNs, and use it as the initial configuration of DNNs followed by back propagation. Both SVMs and HMMs are applied. In all cases, bottleneck architecture is in use. The results are listed in table 1. 
-
+\subsection{Learning Strategies}
+There are three scenarios for training: only training DBNs, ie. unsupervised training; only training DNNs, ie. supervised training; and combined DBNs and DNNs, ie. pre-train and fine-tune. For comparison, we do not apply any pre-processing to the input data, ie. the input data is the audio CQT followed by PCA. In DBNs scenario, since it is a pure unsupervised training, we take the output of bottleneck layer as output, and use SVMs as post classifiers. Whereas we train the networks in a pure supervised manner in DNNs scenario, in which we directly use back propagation to train the neural networks. Viterbi decoding is used for post processing. In the last case of DBN-DNN, we firstly employ RBMs to build up DBNs, and use it as the initial configuration of DNNs followed by back propagation. Both SVMs and HMMs are applied. In all cases, bottleneck architecture is in use. The results are listed in table 1. 
 \begin{table}[h]
 \begin{tabular}{|c|c|c|}
 \hline
 Training Strategy & Post-classifier & WCSR  \\ \hline
-DBNs              & SVMs            & 0.141 \\ \hline
-DNNs              & HMMs            & 0.159      \\ \hline
-DBN-DNNs          & SVMs            & 0.645 \\ \hline
-DBN-DNNs          & HMMs            & 0.755 \\ \hline
+$DN_{DBN}$              & SVMs            & 0.141 \\ \hline
+$DN_{DNN}$              & HMMs            & 0.159      \\ \hline
+$DN_{DBN-DNNs}$          & SVMs            & 0.645 \\ \hline
+$DN_{DBN-DNNs}$          & HMMs            & 0.755 \\ \hline
 \end{tabular}
 \caption{Chord detection performance of DBNs vs. DNNs}
 \end{table}
@@ -239,7 +242,8 @@ As seen from the results, learning pitches does not really work. There should be
 
 \section{Results and Discussion}
 \subsection{Results}
-From previous discussions and comparisons, several settings show the most promise. So we decide to use them as the default configuration in our final evaluations: bottleneck structure outperforms the common structure both in accuracy and time-complexity; DBN-DNNs training strategy beats DBNs and DNNs training strategies without much surprise; splice filtering similar to what CNNs do, generally speaking, yields a better result than the others; finally, Viterbi decoding as post classifiers are more appropriate for this task due to the dynamic properties of chords.  \\
+From previous discussions and comparisons, several settings show the most promise. So we decide to use them as the default configuration in our final evaluations: bottleneck structure outperforms the common structure both in accuracy and time-complexity; DBN-DNNs training strategy beats DBNs and DNNs training strategies without much surprise; splice filtering similar to what CNNs do, generally speaking, yields a better result than the others; finally, Viterbi decoding as post classifiers are more appropriate for this task due to the dynamic properties of chords.  
+
 In previous published results \cite{cho2011feature} on the similar dataset is around 80\%. We present the mean accuracy of 3 fold cross-validation obtained on our 311-piece dataset at the major/minor level (total 25 classes). We compare our results with Chordino approach on our dataset, though in an unfair way, as baseline system. Noting that Chordino system can not only detect major/minor scale, it can detect as much as 120 different chords. Thus we map the Chordino results into our major/minor scale. In this mapping, due to the different chord annotation rules, we could make mistakes through imperfect parsing. The results are listed in table 4, in which Type1 pre-processing is to splice the 5-order FIR low-pass filter and extension filters; whereas Type2 pre-processing is to splice the single-pole IIR low-pass filter and extension filters. 
 
 % Please add the following required packages to your document preamble:
@@ -258,7 +262,8 @@ Proposed DBN-DNNs & Type2          & 0.919   \\ \bottomrule
 \subsection{Discussion}
 We presented a comprehensive system for chord detection, that is competitive with the existing start-of-the-art systems. Our DBN-DNNs model can learn a high-level probabilistic representations for chords. The Viterbi algorithm is applied to find a global optimal path based on the output of our DBN-DNNs as the predicted chord sequence. Furthermore, the bottleneck structure have a stronger learning ability for chords information than the common architecture. By the process of ``encoding" and ``decoding", the networks retain the ``essential information" but discard the redundant ones. The results also indicate that applying pre-processing will significantly increase the accuracy. That's because it will introduce temporal continuity and dynamics into feature representation. Intuitively, dynamic programming algorithms such as Viterbi decoding outperforms the static classifiers such as SVMs due to the dynamic property of chords. Therefore introducing transition probability makes more sense. 
 
-
+\section{Conclusion}
+In this work, we present a system which applies deep learning to the chord detection task. Our DN model is able to learn the high-level features for chord detection across various configurations. Combined with the appropriate pre-processing and post-processing, the performance can compete with state-of-the-art systems. Our pre-processing methods can retain temporal continuity and dynamics in our features; our post-processing could take care of the high-level musical context information. With a bottleneck structure, the overfitting issue s significantly reduced. With some practical limitations, multi-target training using pitch information does not work as well as single-target counterpart. The idea is, however, promising and worthy exploring in the future works. 
 
 \bibliography{ISMIR2015template}
 \end{document}
