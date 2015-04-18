@@ -173,14 +173,20 @@ A softmax output layer is stacked on top of both architectures as described by \
 \end{equation}
 Our network is implemented using the Kaldi package developed by John Hopkins University \cite{povey2011kaldi}.
  
-\section{Post-classifiers}\label{sec:class}
-Although we can interpret the output of softmax layer as likelihood of each class and take the maximum directly to make the final decision, we can also treat the output as the intermediate features and train other classifiers based on these features to make the final decision. 
-\subsection{HMMs}
-Traditionally speaking, chord detection can be treated as a task to estimate underlying hidden chord states from a complex mixture, a task which HMMs is well suited. In HMM-based chord detection systems, feature vectors are extracted from audio signals as the observations, and chords are interpreted as hidden states. The most widely used input features for HMMs are chroma-based features. Some modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored. In this work, a simple first-order HMM is applied. Given the probabilistic property of softmax layer output, we can use them directly as emission probabilities in the context of HMMs. Therefore, we do not have to train HMMs using commonly used Baum-Welch algorithm. Instead, we count the histogram of each class in our training set to be initial probabilities, and use bigram of chord transitions to calculated the transition probabilities. Finally, we employ the Viterbi decoding algorithm to find the global optimal state sequence, which is the final prediction of the chords. 
+\section{Classification}\label{sec:class}
+The output of the softmax layer can be interpreted as the likelihood of each class; taking the maximum will provide a class decision.\footnote{Why don't we report this as a baseline result as well - I think it's interesting!} Alternatively, the output can be treated as intermediate feature vector that can be used as an input to other classifiers for computing the final decision. 
 \subsection{Support Vector Machines}
-Alternatively, we can use static classifiers as well. Because of general good performance, Support Vector Machines (SVMs) are chosen in this work. We train a SVM using the features learned by DBN-DNN, and do the classification for every frame for the test samples followed by a simple prediction smoothing. 
+Support Vector Machines (SVMs) are as a widely used classifier with generally good performance an obvious choice. The SVM is trained using the output of the network as features, and the classification is carried out for every superframe. The classification is followed by a simple prediction smoothing.\footnote{elaborate on that - how do you do it} 
+\subsection{Hidden Markov Models}
+HMMs are, as pointed out above, a standard classifier for automatic chord detection because the characteristics of the task fit the HMM approach well: Chords are hidden states that can be estimated from observations (feature vectors extracted from the audio signal), and the likelihood of chord transitions can be modeled with transition probabilities. 
+Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task.\footnote{add references} In this work we are mostly interested in the performance comparison between different features, so a simple first-order HMM is used. 
+Given the probabilistic property of softmax output layer, we can use it directly as emission probabilities in the context of HMMs. Therefore, there is no need to train the HMM using, e.g., the commonly used Baum-Welch algorithm. Instead, the histogram of each class in our training is used as initial probabilities, and the bigram of chord transitions is used to compute the transition probabilities. Finally, we employ the Viterbi decoding algorithm to find the globally optimal chord sequence. 
 
-\section{Evaluation Metric}
+\section{Evaluation}
+\subsection{Dataset}
+\subsection{Methodology}
+training set, test set validation etc.
+\subsection{Evaluation Metric}
 We use the same evaluation metric as MIREX 2013 in the audio chord detection task. Chord symbol recall (CSR) and weighted chord symbol recall (WCSR) are used to estimate how well the predicted chords match the ground truth. CSR is defined as the total duration of segments where the predictions match the ground truth divided bythe total duration of the song, formulated as in \eqnref{csr}. WCSR is to weight CSR with the songs' length.  
 \begin{equation}\label{csr}
 CSR = \frac{1}{n} \sum_{k=1}^n \frac{C_{k}}{N_{k}}
