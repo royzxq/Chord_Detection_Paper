@@ -215,7 +215,7 @@ Where $n$ is the number of test samples, $C_{k}$ is the number of frames that ar
 \section{Experiment}
 
 \subsection{Learning strategies}
-There are three scenarios for training: only training DBN, ie. the unsupervised training; only training DNN only training DNN, ie. the supervised learning; and combined DBN and DNN, ie. the pre-training and fine-tuning. For comparison, we do not apply any pre-processing to the input data, ie. the input data is the audio CQT followed by PCA. In DBN scenario, since it is a pure unsupervised training, we take the output of bottleneck layer as output, and use SVMs as post classifiers. Whereas we also train the networks in a pure supervised manner in DNN scenario, in which we directly use back propagation to train the neural networks. Viterbi decoding is used for post processing. In the last case of DBN-DNN, we firstly employ RBMs to build up DBN, and use it as the initial configuration of DNN followed by back propagation. Both SVMs and HMMs are applied. In all cases, bottleneck architecture is in use. The results are listed in \ref{dbn-dnn}. 
+There are three scenarios for training: only training DBNs, ie. the unsupervised training; only training DNNs only training DNNs, ie. the supervised learning; and combined DBNs and DNNs, ie. the pre-training and fine-tuning. For comparison, we do not apply any pre-processing to the input data, ie. the input data is the audio CQT followed by PCA. In DBNs scenario, since it is a pure unsupervised training, we take the output of bottleneck layer as output, and use SVMs as post classifiers. Whereas we also train the networks in a pure supervised manner in DNNs scenario, in which we directly use back propagation to train the neural networks. Viterbi decoding is used for post processing. In the last case of DBN-DNN, we firstly employ RBMs to build up DBNs, and use it as the initial configuration of DNNs followed by back propagation. Both SVMs and HMMs are applied. In all cases, bottleneck architecture is in use. The results are listed in \ref{dbn-dnn}. 
 
 \begin{table}[h]
 \begin{tabular}{|c|c|c|}
@@ -223,12 +223,10 @@ There are three scenarios for training: only training DBN, ie. the unsupervised 
 Training Strategy & Post-classifier & WCSR  \\ \hline
 $DN_{DBN}$             & SVMs            & 0.141 \\ \hline
 $DN_{DNN}$              & HMMs            & 0.159      \\ \hline
-$DN_{DBN-DNN}$          & SVMs            & 0.645 \\ \hline
-$DN_{DBN-DNN}$         & Argmax()            & 0.648 \\ \hline
-$DN_{DBN-DNN}$         &  HMMs           & 0.755 \\ \hline
-
+DBN-DNNs          & SVMs            & 0.645 \\ \hline
+DBN-DNNs          & HMMs            & 0.755 \\ \hline
 \end{tabular}
-\caption{Chord detection performance of different learning strategies}
+\caption{Chord detection performance of DBNs vs. DNNs}
 \label{dbn-dnn}
 \end{table}
 
