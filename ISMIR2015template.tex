@@ -115,7 +115,7 @@ Figure~\ref{fig:overview} gives an overview of all components and processing ste
  \label{fig:overview}
 \end{figure}
 
-\subsection{Input Representation}
+\subsection{Input Representation}\label{sec:input}
 The input audio are converted to a sample rate of \unit[11.025]{kHz}. Then, a Constant Q transform (CQT) is applied. 
 The CQT is a perceptually inspired time-frequency transformation for audio. The resulting frequency bins are equally spaced on a logarithmic (``pitch'') scale. It has the advantage of providing a more musically and perceptually meaningful spectral representation than the DFT. 
 We used an implementation of the CQT as a filterbank of Gabor filters, spaced at \unit[36]{bins per octave}, i.e.\ \unit[3]{bins per semitone}, yielding \unit[180]{bins} representing a frequency range spanning from \unit[110]{Hz} to \unit[3.520]{kHz}. Finally, we use Principal Component Analysis (PCA) for decorrelation, and apply Z-Score normalization\cite{sola1997importance}. 
@@ -192,45 +192,60 @@ Given the probabilistic property of softmax output layer, we can use it directly
 
 \section{Evaluation procedure}
 \subsection{Dataset}
-Our dataset is collected from a variety of different sources, yielding a 311-piece collection. The data is composed of 180 songs from Christopher Harte's Beatles dataset, 100 songs from the RWC Pop dataset, 18 songs from the Zwielicht dataset and 13 songs from Queen dataset. Each song is mixed to monaural and down-sampled to 11025 Hz.
+Our dataset is a combination of several different datasets, yielding a 311-piece collection. The data is composed of 
+\begin{itemize}
+	\item   $180$ songs from the \textit{Beatles dataset} \cite{},
+    \item   $100$ songs from the \textit{RWC Pop dataset} \cite{}, 
+    \item   $18$ songs from the \textit{Zweieck dataset} \cite{}, and 
+    \item   $13$\footnote{I thought it was 31 labeled songs in the queen dataset? Double check all numbers!} songs from \textit{Queen dataset} \cite{}.
+\end{itemize}  
+The pre-processing as described in Sect.~\ref{sec:pre-proc} ensures identical input audio formats.
+
 \subsection{Methodology}
 
-We divide our dataset into 2 parts: 80\% for training set and 20\% for test set. Among the training set, we use 10\% as a validation set for training the deep network.
+The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. \footnote{How is training and test data used between training the network and training the post classifiers??}
 
-
-Ground truth time-aligned chord symbols are mapped to the major/minor dictionaries comprising 25 chord labels:
+The chosen outputs for classification are major and minor triads for every root note, resulting in a dictionary of $24+1$ chord labels.
+Ground truth time-aligned chord symbols are mapped to this major/minor dictionary:\footnote{are you sure that this equation helps anyone? I feel it's more confusing than helping. And what is C? The dictionary?}
 \begin{equation}
 C_{majmin} \subset {N} \cup S \times {maj,min}
 \end{equation}
-
-where $S$ represents 12 pitch classes and $N$ is the unknown chord label, yielding totally 25 chord classes. Evaluation is based on WCSR, which will be introduced in the next section. Since we only map the ground truth into major and minor scale, we consider the chords except triad major, triad minor, seventh major, seventh minor to be N chords. For instance, G:maj and G:maj7 are all mapped to `Gmaj'; G:dim and G:6 are all mapped to `N'.
+with $S$ representing the 12 pitch classes (root notes) and $N$ being the label for unknown chords. In the calculation of the detection accuracy, the following chord types are mapped to the corresponding triads in the dictionary: triad major/minor and seventh major/minor. Other chord types are treated as unknown chords. For instance, G:maj and G:maj7 are mapped to `G:maj'; G:dim and G:6 are all mapped to `N'.\footnote{Maybe it is worth noting here how the ground truth is distributed after this procedure? Most importantly the probability of the largest class?}
 
 \subsection{Evaluation Metric}
-We use the same evaluation metric as MIREX 2013 in the audio chord detection task. Chord symbol recall (CSR) and weighted chord symbol recall (WCSR) are used to estimate how well the predicted chords match the ground truth. CSR is defined as the total duration of segments where the predictions match the ground truth divided bythe total duration of the song. WCSR is to weight CSR with the songs' length, formulated as in \eqnref{csr}.  
+The used evaluation metric is the same as proposed in the audio chord detection task for MIREX 2013: the Weighted Chord Symbol Recall (WCSR) is used to estimate how well the predicted chords match the ground truth. WCSR, formulated in \eqnref{csr}, is defined as the total duration of segments with correct prediction: \footnote{verify that this is correct --- sounded to like it as the CSR divides byt the song length and the WCSR weights with the song length...}  
 \begin{equation}\label{csr}
-WCSR = \frac{1}{N} \sum_{k=1}^n C_{k}
+WCSR = \frac{1}{N} \sum_{k=1}^n TP_{k},
 \end{equation}
-Where $n$ is the number of test samples, $C_{k}$ is the number of frames that are correctly detected in kth test sample, $N$ is the total number of frames in test samples. 
+in which $n$ is the number of test samples (songs), $N$ is the total number of frames in all test samples, and $TP_{k}$ is the number of frames that are correctly detected in the kth sample. 
 
-\section{Experiment}
+\section{Experiments}
 
 \subsection{Learning strategies}
-There are three scenarios for training: only training DBN, ie. the unsupervised training; only training DNN only training DNN, ie. the supervised learning; and combined DBN and DNN, ie. the pre-training and fine-tuning. For comparison, we do not apply any pre-processing to the input data, ie. the input data is the audio CQT followed by PCA. In DBN scenario, since it is a pure unsupervised training, we take the output of bottleneck layer as output, and use SVMs as post classifiers. Whereas we also train the networks in a pure supervised manner in DNN scenario, in which we directly use back propagation to train the neural networks. Viterbi decoding is used for post processing. In the last case of DBN-DNN, we firstly employ RBMs to build up DBN, and use it as the initial configuration of DNN followed by back propagation. Both SVMs and HMMs are applied. In all cases, bottleneck architecture is in use. The results are listed in \ref{dbn-dnn}. 
-
-\begin{table}[h]
-\begin{tabular}{|c|c|c|}
-\hline
-Training Strategy & Post-classifier & WCSR  \\ \hline
-$DN_{DBN}$             & SVMs            & 0.141 \\ \hline
-$DN_{DNN}$              & HMMs            & 0.159      \\ \hline
-$DN_{DBN-DNN}$          & SVMs            & 0.645 \\ \hline
-$DN_{DBN-DNN}$         & Argmax()            & 0.648 \\ \hline
-$DN_{DBN-DNN}$         &  HMMs           & 0.755 \\ \hline
-
+There are three different training scenarios:
+\begin{itemize}
+	\item   unsupervised training (the trained network will be referred to as $DN_\mathrm{DBN}$)
+	\item   supervised training (the trained network will be referred to as $DN_\mathrm{DNN}$)
+    \item   the combination of unsupervised (pre-training) and supervised (fine-tuning) training  (the trained network will be referred to as $DN_\mathrm{DBN-DNN}$)
+\end{itemize} 
+In this experiment, no pre-processing is applied to the data; the input is simply the input representation (CQT followed by PCA) as described in Sect.~\ref{sec:input}. The chosen architecture for this experiment is the bottleneck architecture.
+As the $DN_\mathrm{DBN}$ scenario is unsupervised, we take the output of bottleneck layer as input to the classifier, in this case an SVM. For the $DN_\mathrm{DNN}$ (supervised but no pre-training), back propagation is used to train the neural network and an HMM with Viterbi decoding is used for classification. Finally, in the case of the $DN_\mathrm{DBN-DNN}$ (pre-training and supervised learning), three different classifiers are compared: the maximum of the softmax output (Argmax), an SVM, and an HMM. 
+\begin{table}
+\centering
+\begin{tabular}{@{}llr@{}}
+\toprule
+Training Strategy & Classifier & WCSR  \\ \hline
+$DN_\mathrm{DBN}$             & SVM            & 0.141 \\ 
+$DN_\mathrm{DNN}$              & HMM            & 0.159      \\ 
+$DN_\mathrm{DBN-DNN}$          & SVM            & 0.645 \\ 
+$DN_\mathrm{DBN-DNN}$         & Argmax()            & 0.648 \\ 
+$DN_\mathrm{DBN-DNN}$         &  HMM           & 0.755 \\ \hline
 \end{tabular}
 \caption{Chord detection performance of different learning strategies}
 \label{dbn-dnn}
 \end{table}
+
+Table \ref{dbn-dnn} lists the results of the experiment. It comes as no surprise that the combination of unsupervised and supervised training ($DN_\mathrm{DBN-DNN}$) greatly outperforms both the unsupervised $DN_\mathrm{DBN}$ and the supervised $DN_\mathrm{DNN}$ training scenarios. In the comparison between the three output classifiers, the HMM performs best, while there is only minimal distance between the Argmax and SVM output.
 
 \subsection{Common Architecture Vs. Bottleneck Architecture}
 As mentioned before, we employ a bottleneck architecture in this work. According to \cite{grezl2007probabilistic}, deep networks are suitable in a bottleneck architecture to learn high-level features. We can consider the bottleneck networks as two halves. The first half is from the first layer to the bottleneck layer, in which the number of neurons gradually decreases. This is actually an encoding or compression process. The useful information gets compacter as well as the redundant information can be gotten rid of. The second half is from the bottleneck layer to the last layer, in which the number of neurons gradually increases. We can see it as a decoding process. By these two processes, the networks are able to extract the useful information and discard the redundant ones. Another benefit of bottleneck architecture is that it can reduce the overfitting issue by decreasing the complexity of the system. We compare the common architecture and the bottleneck architecture under the same configurations. In comparison, the configurations are: HMMs as post-classifiers; DBN-DNNs as training strategy. The results are listed in table 2.
