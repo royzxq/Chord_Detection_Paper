@@ -248,7 +248,22 @@ $DN_\mathrm{DBN-DNN}$         &  HMM           & \textbf{0.755} \\ \hline
 
 Table \ref{dbn-dnn} lists the results of the experiment. It comes as no surprise that the combination of unsupervised and supervised training ($DN_\mathrm{DBN-DNN}$) greatly outperforms both the unsupervised $DN_\mathrm{DBN}$ and the supervised $DN_\mathrm{DNN}$ training scenarios. In the comparison between the three output classifiers, the HMM performs best, while there is only minimal distance between the Argmax and SVM output.
 
-\subsection{Common Architecture Vs. Bottleneck Architecture}
+\subsection{Filters Evaluation}
+As stated in previous section, we investigate to design different filters in pre-processing. The first type is linear phase signal pole filter, the difference equation is formulate as \eqnref{IIR}:
+\begin{equation}\label{IIR}
+y_{n} = (1-\alpha) y_{n-1} + \alpha x_{n}
+\end{equation}
+Normally, the IIR filters do not have a linear phase response. But we use filtfilt technique to achieve zero phase. Noting that there is only one parameter $\alpha$ which determines the frequency response shape. We conduct a grid search for this parameter, starting from 0.25 to 0.75 with the step size of 0.25. Meanwhile we compare it with different five-order FIR low-pass filter centered around the current frame. The FIR coefficients are exponentially decreased in both side, ie. the impulse response is in Laplace shape. Furthermore, we also combine the ideas of convolution and time splicing. We concatenate the output of low-pass filter together as time splicing does. Inspired by CNNs, we can also concatenate the output of different filters, the results are shown in figure 5.
+
+\begin{figure}
+ \centerline{\framebox{
+ \includegraphics[width=\columnwidth]{filters.png}}}
+ \caption{Comparison Between different filters}
+ %\label{fig:example}
+\end{figure}
+
+\subsection{Architecture}
+\subsubsection{Common vs. Bottleneck}
 As mentioned before, we employ a bottleneck architecture in this work. According to \cite{grezl2007probabilistic}, deep networks are suitable in a bottleneck architecture to learn high-level features. We can consider the bottleneck networks as two halves. The first half is from the first layer to the bottleneck layer, in which the number of neurons gradually decreases. This is actually an encoding or compression process. The useful information gets compacter as well as the redundant information can be gotten rid of. The second half is from the bottleneck layer to the last layer, in which the number of neurons gradually increases. We can see it as a decoding process. By these two processes, the networks are able to extract the useful information and discard the redundant ones. Another benefit of bottleneck architecture is that it can reduce the overfitting issue by decreasing the complexity of the system. We compare the common architecture and the bottleneck architecture under the same configurations. In comparison, the configurations are: HMMs as post-classifiers; DBN-DNNs as training strategy. The results are listed in table 2.
 
 % Please add the following required packages to your document preamble:
@@ -267,21 +282,7 @@ Bottleneck & Splice Filtering & 0.936 & 0.919 \\ \bottomrule
 \caption{Chord detection performance of different architecture}
 \end{table}
 
-\subsection{Filters Evaluation}
-As stated in previous section, we investigate to design different filters in pre-processing. The first type is linear phase signal pole filter, the difference equation is formulate as \eqnref{IIR}:
-\begin{equation}\label{IIR}
-y_{n} = (1-\alpha) y_{n-1} + \alpha x_{n}
-\end{equation}
-Normally, the IIR filters do not have a linear phase response. But we use filtfilt technique to achieve zero phase. Noting that there is only one parameter $\alpha$ which determines the frequency response shape. We conduct a grid search for this parameter, starting from 0.25 to 0.75 with the step size of 0.25. Meanwhile we compare it with different five-order FIR low-pass filter centered around the current frame. The FIR coefficients are exponentially decreased in both side, ie. the impulse response is in Laplace shape. Furthermore, we also combine the ideas of convolution and time splicing. We concatenate the output of low-pass filter together as time splicing does. Inspired by CNNs, we can also concatenate the output of different filters, the results are shown in figure 5.
-
-\begin{figure}
- \centerline{\framebox{
- \includegraphics[width=\columnwidth]{filters.png}}}
- \caption{Comparison Between different filters}
- %\label{fig:example}
-\end{figure}
-
-\subsection{Learning Chords Vs. Learning Pitches}
+\subsubsection{Single-Label vs. Multi-Label}
 Because of the hierarchical property of chords, our learning targets are not limited to chords themselves. Since chords can be decomposed into pitches, therefore we could let the networks learn pitch information instead of chords. By doing so, we hope it can decrease the abstraction and complexity of the task. The main reason for that is pitches are more directly related to the input representations, ie. CQT. It will, however, lead to another issue which is we will transfer the single target learning task to multi-target learning. We use several settings based on the previous experiments to conduct the comparison between chords and pitches. The results are listed in table 4. 
 
 \begin{table}[h]
