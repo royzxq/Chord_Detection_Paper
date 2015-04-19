@@ -182,10 +182,10 @@ A softmax output layer is stacked on top of both architectures as described by \
 Our network is implemented using the Kaldi package developed by John Hopkins University \cite{povey2011kaldi}.
  
 \section{Classification}\label{sec:class}
-The output of the softmax layer can be interpreted as the likelihood of each class; taking the maximum will provide a class decision. Alternatively, the output can be treated as intermediate feature vector that can be used as an input to other classifiers for computing the final decision. 
-\subsection{Support Vector Machines}
+The output of the softmax layer can be interpreted as the likelihood of each class; taking the maximum will provide a class decision (this method will be referred to as \textit{Argmax}). Alternatively, the output can be treated as intermediate feature vector that can be used as an input to other classifiers for computing the final decision. 
+\subsection{Support Vector Machine}
 Support Vector Machines (SVMs) are as a widely used classifier with generally good performance an obvious choice. The SVM is trained using the output of the network as features, and the classification is carried out for every frame. The classification is followed by a simple prediction smoothing.
-\subsection{Hidden Markov Models}
+\subsection{Hidden Markov Model}
 HMMs are, as pointed out above, a standard classifier for automatic chord detection because the characteristics of the task fit the HMM approach well: Chords are hidden states that can be estimated from observations (feature vectors extracted from the audio signal), and the likelihood of chord transitions can be modeled with transition probabilities. 
 Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task \cite{papadopoulos2007large,lee2008acoustic}. In this work we are mostly interested in the performance comparison between different features, so a simple first-order HMM is used. 
 Given the probabilistic property of softmax output layer, we can use it directly as emission probabilities in the context of HMMs. Therefore, there is no need to train the HMM using, e.g., the commonly used Baum-Welch algorithm. Instead, the histogram of each class in our training is used as initial probabilities, and the bigram of chord transitions is used to compute the transition probabilities. Finally, we employ the Viterbi decoding algorithm to find the globally optimal chord sequence. 
@@ -232,15 +232,16 @@ In this experiment, no pre-processing is applied to the data; the input is simpl
 As the $DN_\mathrm{DBN}$ scenario is unsupervised, we take the output of bottleneck layer as input to the classifier, in this case an SVM. For the $DN_\mathrm{DNN}$ (supervised but no pre-training), back propagation is used to train the neural network and an HMM with Viterbi decoding is used for classification. Finally, in the case of the $DN_\mathrm{DBN-DNN}$ (pre-training and supervised learning), three different classifiers are compared: the maximum of the softmax output (Argmax), an SVM, and an HMM. 
 \begin{table}
 \centering
-\begin{tabular}{@{}llr@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llr}
+%\begin{tabular}{@{}llr@{}}
 \toprule
-Training Strategy & Classifier & WCSR  \\ \hline
+\textbf{Training Scenario} & \textbf{Classifier} & \textbf{WCSR}  \\ \hline
 $DN_\mathrm{DBN}$             & SVM            & 0.141 \\ 
 $DN_\mathrm{DNN}$              & HMM            & 0.159      \\ 
-$DN_\mathrm{DBN-DNN}$          & SVM            & 0.645 \\ 
 $DN_\mathrm{DBN-DNN}$         & Argmax()            & 0.648 \\ 
-$DN_\mathrm{DBN-DNN}$         &  HMM           & 0.755 \\ \hline
-\end{tabular}
+$DN_\mathrm{DBN-DNN}$          & SVM            & 0.645 \\ 
+$DN_\mathrm{DBN-DNN}$         &  HMM           & \textbf{0.755} \\ \hline
+\end{tabular*}
 \caption{Chord detection performance of different learning strategies}
 \label{dbn-dnn}
 \end{table}
