@@ -213,3 +213,11 @@
   booktitle={Proc. of 10th International Conference on Music Information Retrieval},
   year={2009}
 }
+@inproceedings{goto2002rwc,
+  title={RWC Music Database: Popular, Classical and Jazz Music Databases.},
+  author={Goto, Masataka and Hashiguchi, Hiroki and Nishimura, Takuichi and Oka, Ryuichi},
+  booktitle={ISMIR},
+  volume={2},
+  pages={287--288},
+  year={2002}
+}
