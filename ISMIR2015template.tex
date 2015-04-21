@@ -61,7 +61,7 @@ The goal of automatic chord detection is to automatically recognize the chord pr
 In recent years, deep learning approaches have gained significant interest in the machine learning community as a way of building hierarchical representations from large amounts of data. Deep learning has been applied successfully in many fields. For instance, a system for speech recognition with deep learning was able to outperform state-of-the-art systems (not using deep learning) \cite{hinton2012deep}. Several studies indicate that deep learning methods can be very successful when applied to Music Information Retrieval (MIR) tasks, especially when used for feature learning \cite{lee2009unsupervised,battenberg2012analyzing,humphrey2012moving,hamel2010learning}. Deep learning, with its potential to untangle complicated patterns in large amounts of data, should be well suited for the task of chord detection.
 
 In this work, we investigate Deep Networks (DNs) for learning high-level and more representative features in the context of chord detection, effectively replacing the widely used pitch chroma intermediate representation. 
-We present individual results for different pre-processing options such as time splicing and filtering (see Sect.~\ref{sec:pre-proc}), training scenarios (see Sect.~\ref{sec:train}), architectures (see Sect.~\ref{sec:arch}), and output classifiers (see Sect.~\ref{sec:class}).\footnote{check section references!} %Since chords last for a period of time instead of static and instantaneous, we apply time splicing and convolution to account for relations between nearby frames. Then we can derive transition probability between chords from our training set and use the high-level probabilistic features as emission probability to decode the whole chord sequence. Alternatively we also train SVMs with same features and do the static classification frame by frame.
+We present individual results for different pre-processing options such as time splicing and filtering (see Sect.~\ref{sec:pre-proc}), training scenarios (see Sect.~\ref{sec:train}), architectures (see Sect.~\ref{sec:arch}), and output classifiers (see Sect.~\ref{sec:class}). %Since chords last for a period of time instead of static and instantaneous, we apply time splicing and convolution to account for relations between nearby frames. Then we can derive transition probability between chords from our training set and use the high-level probabilistic features as emission probability to decode the whole chord sequence. Alternatively we also train SVMs with same features and do the static classification frame by frame.
 
 %The definition of chords is, simply speaking, \"simultaneous sounding of two or notes". But in reality this is not the case. Real music often generate not only chord tones but nonchord tones with no guarantee of simultaneity. To make it more complicated, sometimes either some notes are missing or more notes are added-on into a chord. Thus, traditional chord detection systems exhibit a set of practical difficulties. Deep learning has a great potential in entangling complicated patterns within large data. Therefore, although chord detection is one of the most difficult and challenging tasks for music analysis, applying deep learning methods is much potentially promising. 
 %
@@ -91,7 +91,7 @@ Modifications of the network architecture obviously result in different results.
 Recently, more researchers investigated deep learning in the context of MIR. Lee et al.\ pioneered the application of convolutional deep learning for audio feature learning \cite{lee2009unsupervised}. Hamel et al.\ used the features learned from music with a DBN for both music genre classification and music auto-tagging \cite{hamel2010learning}; their system was successful in MIREX 2011 with top-ranked results. Battenberg employed a conditional DBN to analyze drum patterns \cite{battenberg2012analyzing}. The use of deep architectures for chord detections, however, has not yet been explored, although modern neural networks have been employed in this field. For instance, Boulanger et al.\ investigated recurrent neural networks \cite{boulanger2013audio} and Humphrey has explored CNNs \cite{humphrey2012rethinking,humphrey2012learning}. While they also used the concept of pre-training, their architectures have only two or 3 layers and thus cannot be called ``deep''.
 \begin{figure}
  \centerline{\framebox{
- \includegraphics[width=\columnwidth]{bottleneck}}}
+ \includegraphics[scale=0.55]{bottleneck}}}
  \caption{Bottleneck Neural Network Architecture}
  \label{fig:bottleneck}
 \end{figure}
@@ -111,7 +111,7 @@ The basic buildings blocks of most modern approaches to chord detection can be t
 Figure~\ref{fig:overview} gives an overview of all components and processing steps of the presented system. The following section will discuss all of these steps in detail.
 \begin{figure}
  \centerline{\framebox{
- \includegraphics[width=\columnwidth]{flowchart.png}}}
+ \includegraphics[scale=0.7]{flowchart.png}}}
  \caption{The overview of our system}
  \label{fig:overview}
 \end{figure}
@@ -163,13 +163,13 @@ The ideas of splicing and convolution can be combined, as exemplified by Fig.~\r
 %In a further processing, we combine the ideas of time splicing and convolution: we either conduct time splicing on the output of the low pass filter, or splice the output of different filters together, as in figure 4.
 \begin{figure}
  \centerline{\framebox{
- \includegraphics[width=\columnwidth]{CNN}}}
+ \includegraphics[scale=0.6]{CNN}}}
  \caption{Splicing output of different filters}
- \label{fig:filtersplice}
+ \label{fig:filtersplice}B
 \end{figure}
 We call this kind of processing as ``spliced filters".
 
-Additionally, like CNNs we could optionally apply a maximum pooling operation on the output of spliced filters. 
+Additionally, like CNNs a maximum pooling operation on the output of spliced filters could be optionally applied, which is to take the maximum value among different filters per ``bin". 
  
 \subsection{Training}\label{sec:train}
 It is impractical to train DNNs directly with back propagation using gradient decent due to their deep structure and limited training samples. Therefore, the network is usually initialized by an unsupervised pre-training step. As our network consists of RBMs, Gibbs sampling can be used for training. The objective is to retain as much information as possible between input and output. 
@@ -226,11 +226,11 @@ with $S$ representing the 12 pitch classes (root notes) and $N$ being the label 
 \end{figure}
 
 \subsection{Evaluation Metric}
-The used evaluation metric is the same as proposed in the audio chord detection task for MIREX 2013: the Weighted Chord Symbol Recall (WCSR) is used to estimate how well the predicted chords match the ground truth. WCSR, formulated in \eqnref{csr}, is defined as the total duration of segments with correct prediction: \footnote{verify that this is correct --- sounded to like it as the CSR divides byt the song length and the WCSR weights with the song length...}  
+The used evaluation metric is the same as proposed in the audio chord detection task for MIREX 2013: the Weighted Chord Symbol Recall (WCSR) is used to estimate how well the predicted chords match the ground truth. WCSR, formulated in \eqnref{csr}, is defined as the total duration of segments with correct prediction:   
 \begin{equation}\label{csr}
-WCSR = \frac{1}{N} \sum_{k=1}^n TP_{k},
+WCSR = \frac{1}{N} \sum_{k=1}^n C_{k},
 \end{equation}
-in which $n$ is the number of test samples (songs), $N$ is the total number of frames in all test samples, and $TP_{k}$ is the number of frames that are correctly detected in the kth sample. 
+in which $n$ is the number of test samples (songs), $N$ is the total number of frames in all test samples, and $C_{k}$ is the number of frames that are correctly detected in the kth sample. 
 
 \section{Experiments}
 
@@ -253,8 +253,7 @@ $DN_\mathrm{DBN-DNN}$         &  HMM           & \textbf{0.755} \\ \bottomrule
 \label{tab:dbn-dnn}
 \end{table}
 
-Table \ref{tab:dbn-dnn} lists the results of the experiment. It comes as no surprise that the combination of unsupervised and supervised training ($DN_\mathrm{DBN-DNN}$) greatly outperforms both the unsupervised $DN_\mathrm{DBN}$ and the supervised $DN_\mathrm{DNN}$ training scenarios. In the comparison between the three output classifiers, the HMM performs best, while there is only minimal distance between the Argmax and SVM output.
-
+The results listed in Table~\ref{tab:dbn-dnn} are unambiguous and unsurprising: the HMM with Viterbi decoding outperforms the SVM; using HMMs with a model for transition probabilities is an appropriate approach to chord detection as it models the dynamic properties of chord progressions, which cannot be done with non-dynamic classifiers such as SVMs. One noteworthy result is that the SVM does not improve the WCSR compared to the direct (Argmax) output of the network. Apparently, the SVM is not able to improve separability of the learned output features.
 \subsection{Pre-processing}
 As stated in Sect.~\ref{sec:pre-proc}, we investigate the application of different filters in the pre-processing stage. 
 In a first experiment, a single pole filter (see \eqnref{IIR}) is applied in an anti-causal way in order to assure zero phase. It has one parameter $\alpha$ for which the values 0.25, 0.5, and 0.75 are evaluated. In a second experiment, these filter outputs are spliced with the outputs of the extension filters as introduced in Sect.~\ref{sec:pre-proc}. These experiments are carried out with the  $DN_\mathrm{DBN-DNN}$ training scenario, a bottleneck architecture, and an HMM classifier. Table~\ref{table:filter} lists the results of with these different pre-processing variants.
@@ -276,10 +275,13 @@ $\alpha$    & Pre-processing  & WCSR  \\  \midrule
 0.75 & Spliced Filters & 0.919 \\ \bottomrule
 \end{tabular*}
 \caption{Chord detection performance using different filter parameters}
+
+
 \label{table:filter}
 
 \end{table}
-It can observed that the network trained with filtered inputs slightly outperforms the network without pre-processing; splicing the filtered input with the extension filter outputs increases the results significantly.
+It can observed that the network trained with filtered inputs slightly outperforms the network without pre-processing; splicing the filtered input with the extension filter outputs increases the results significantly. 
+
 
 \subsection{Architecture}
 \subsubsection{Common vs.\ Bottleneck}
@@ -296,13 +298,17 @@ Bottleneck                     & None                                & 0.855    
 %Common                         & 2 Time Splicing                     & 0.903                                                  & 0.712 \\
 %\multicolumn{1}{l}{Bottleneck} & \multicolumn{1}{l}{2 Time Splicing} & 0.892                                 & 0.821 \\ 
 Common     & Spliced Filters & \textbf{0.985} & 0.876 \\
-Bottleneck & Spliced Filters & 0.936 & \textbf{0.919} \\ \bottomrule
+Bottleneck & Spliced Filters & 0.936 & \textbf{0.919} \\ 
+Common & Pooling & 0.965 & 0.875 \\ 
+Bottleneck & Pooling & 0.960 & 0.916 \\ \bottomrule
 \end{tabular*}
 \caption{Chord detection performance for different architectures and pre-processing steps}
 \label{tab:arch}
 \end{table}
 
-The results show that for the two pre-processing scenarios tested, the bottleneck architecture gives significantly better results ($p=???$)\footnote{compute significance} on the test set (WSCR). This is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
+The results show that for the two pre-processing scenarios tested, the bottleneck architecture gives significantly better results ($p=0.023$) on the test set (WSCR). This is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
+The bottleneck architecture is clearly advantageous to use: it reduces complexity and thus the training workload and increases the classification performance significantly. Furthermore, the comparison of classifier performance between training and test set in Table~\ref{tab:arch} clearly indicates that the common architecture tends to fit more to the training data~---~the performance difference between training and test set is much higher for the common architecture.
+
 
 \subsubsection{Single-Label vs.\ Multi-Label}
 As mentioned above, the pitch chroma is the standard feature representation for audio chord detection. Since we use the output of our deep network as feature, it seems an obvious choice to learn pitch class information (and thus, a pitch chroma) instead of the chord classes. By doing so, the number of outputs is reduced by a factor of two, and there would also be a closer relation between the output and the input representation, the CQT. Therefore, the abstraction and complexity of the task might be decreased. It will, however, lead to another issue: the single-label output (one chord per output) will be changed into a multi-label output (multiple pitches per output). Therefore, the learning has to be modified to allow multiple simultaneous (pitch class) labels. 
@@ -319,29 +325,17 @@ Multi-Label --- 12 Pitch Classes & 0.78  \\ \bottomrule
 \caption{Chord detection performance for single-label vs.\ multi-label learning}
 \label{tab:multilabel}
 \end{table}
-
-As can be seen from the table, the performance for multi-label results is clearly worse than the result for single-label training.
-
-
-\section{Discussion}
-\subsection{Learning strategy \& classifiers}
-The results listed in Table~\ref{tab:dbn-dnn} are unambiguous and unsurprising: the combination of unsupervised and supervised training significantly outperforms learning strategies that use either supervised or unsupervised training. And due to the random initialization in the supervised training, back propagation could stuck in a extremely poor local optimum thus making the learning totally meaningless. It is also unsurprising that the HMM with Viterbi decoding outperforms the SVM; using HMMs with a model for transition probabilities is an appropriate approach to chord detection as it models the dynamic properties of chord progressions, which cannot be done with non-dynamic classifiers such as SVMs. One noteworthy result is that the SVM does not improve the WCSR compared to the direct (Argmax) output of the network. Apparently, the SVM is not able to improve separability of the learned output features.
-
-\subsection{Pre-processing}
-Although we did not use a CNN, the use of pre-filtering and splicing of the input representation somewhat emulates a simple CNN. While a low-pass filter by itself increases the classification performance only slightly, the splicing of the outputs of different filters has a large effect on the classification rate, as shown in Table~\ref{tab:filter}.
-
-\subsection{Architecture}
-The bottleneck architecture is clearly advantageous to use: it reduces complexity and thus the training workload and increases the classification performance significantly. Furthermore, the comparison of classifier performance between training and test set in Table~\ref{tab:arch} clearly indicates that the common architecture tends to fit more to the training data~---~the performance difference between training and test set is much higher for the common architecture.
-
+According to \cite{boulanger2013audio}, the authors combine chroma features and the recurrent neural networks to get a slightly better result (Although they do not talk about the any details of this combination). 
+As can be seen from the table, however, the performance for multi-label results is clearly worse than the result for single-label training.
 The results of the multi-label training of chroma vectors are disappointing; possible reasons for bad performance include
 \begin{inparaenum}[(i)]
     \item   difficulties with multi-target learning, since it increases the difficulty to train; furthermore, our implementation of multi-label training might be sub-optimal as the same posterior is assigned to each target without any information on the pitch class energy, and
-    \item   the issue that not all pitches always sound simultaneously in a chord (or might be missing altogether) might have larger impact on the multi-label training than on the single-label training.\footnote{talk somewhere here about the other paper that somehow used pitch chroma.}    
+    \item   the issue that not all pitches always sound simultaneously in a chord (or might be missing altogether) might have larger impact on the multi-label training than on the single-label training.    
 \end{inparaenum}
 
 
-\subsection{Overall results}
-It it always challenging to compare previous results because of the varying evaluation methodologies, metrics, and datasets. It seem that the results of Cho and Bello, who reported a performance of about 80\%, were computed with a comparable dataset. In order to provide a baseline result to put results into perspective, we present the results of Chordino \cite{mauch2010approximate} with the default settings, computed on our dataset. It should be pointed out that this comparison is unfair as Chordino is able to detect as many as 120 chords, compared to our 24. The chordino results are mapped to triads the same way as the ground truth annotations. The results are shown in Table~\ref{tab: final}.
+\section{Results \& Discussion}
+It it always challenging to compare previous results because of the varying evaluation methodologies, metrics, and datasets. It seems that the results of Cho and Bello, who reported a performance of about 80\%, were computed with a comparable dataset. In order to provide a baseline result to put results into perspective, we present the results of Chordino \cite{mauch2010approximate} with the default settings, computed on our dataset. It should be pointed out that this comparison is unfair as Chordino is able to detect as many as 120 chords, compared to our 24. The chordino results are mapped to triads the same way as the ground truth annotations. The results are shown in Table~\ref{tab: final}. 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}
@@ -350,9 +344,11 @@ It it always challenging to compare previous results because of the varying eval
 \toprule
 \textbf{Method}   &  \textbf{WCSR}   \\ \midrule
 Chordino & 0.625       \\
-best configuration &  0.919   \\ \bottomrule
+best configuration &  0.919   \\ 
+best configuration with max pooling & 0.916 \\ \bottomrule
 \end{tabular*}
 \caption{Comparison of the performance of the best configuration with Chordino}
+\label{tab: final}
 \end{table}
 The presented results are clearly competitive with existing state-of-the-art systems.
 
