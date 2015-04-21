@@ -112,7 +112,7 @@ Figure~\ref{fig:overview} gives an overview of all components and processing ste
 \begin{figure}
  \centerline{\framebox{
  \includegraphics[width=\columnwidth]{flowchart.png}}}
- \caption{The overview of our system}\footnote{change font size in this figure so that all boxes can have the same horizontal width AND that the font size matches the font size in other graphs}
+ \caption{The overview of our system}
  \label{fig:overview}
 \end{figure}
 
@@ -167,10 +167,12 @@ The ideas of splicing and convolution can be combined, as exemplified by Fig.~\r
  \caption{Splicing output of different filters}
  \label{fig:filtersplice}
 \end{figure}
-We call this kind of processing as ``splice filtering. 
+We call this kind of processing as ``spliced filters".
+
+Additionally, like CNNs we could optionally apply a maximum pooling operation on the output of spliced filters. 
  
 \subsection{Training}\label{sec:train}
-It is impractical to train DNNs directly with back propagation using gradient decent due to their deep structure. Therefore, the network is usually initialized by an unsupervised pre-training step. As our network consists of RBMs, Gibbs sampling can be used for training. The objective is to retain as much information as possible between input and output. 
+It is impractical to train DNNs directly with back propagation using gradient decent due to their deep structure and limited training samples. Therefore, the network is usually initialized by an unsupervised pre-training step. As our network consists of RBMs, Gibbs sampling can be used for training. The objective is to retain as much information as possible between input and output. 
 
 The computation between layers can be represented as:
 \begin{equation}\label{dbn}
@@ -180,7 +182,7 @@ which is identical to many traditional neural networks. Therefore, a standard ba
 
 \subsection{Architecture}\label{sec:arch}
 We investigate a deep network with $6$ layers in two different architectures. The common architecture features the same amount of neurons in every layer, in our case $1024$. The bottleneck architecture has a lower number of neurons in the middle layers, namely $256$ neurons in the middle layer, $512$ in its neighboring layers, and $1024$ neurons in the remaining layers\cite{grezl2007probabilistic}.
-A softmax output layer is stacked on top of both architectures as described by \eqnref{softmax}.\footnote{maybe move this to related work??}
+A softmax output layer is stacked on top of both architectures as described by \eqnref{softmax}.
 \begin{equation}\label{softmax}
 \softmax(Y_{l}) = \frac{\exp(Y_{l})}{\sum_{k=1}^N \exp(Y_{k})}
 \end{equation}
@@ -208,14 +210,20 @@ The pre-processing as described in Sect.~\ref{sec:pre-proc} ensures identical in
 
 \subsection{Methodology}
 
-The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. \footnote{How is training and test data used between training the network and training the post classifiers??}
+The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. After that, all the data in the training set will be used to train the post-classifier.
 
 The chosen outputs for classification are major and minor triads for every root note, resulting in a dictionary of $24+1$ chord labels.
-Ground truth time-aligned chord symbols are mapped to this major/minor dictionary:\footnote{are you sure that this equation helps anyone? I feel it's more confusing than helping. And what is C? The dictionary?}
+Ground truth time-aligned chord symbols are mapped to this major/minor dictionary:
 \begin{equation}
 Chord_{majmin} \subset \{N\} \cup \{S \times {maj,min}\}
 \end{equation}
-with $S$ representing the 12 pitch classes (root notes) and $N$ being the label for unknown chords. In the calculation of the detection accuracy, the following chord types are mapped to the corresponding triads in the dictionary: triad major/minor and seventh major/minor. Other chord types are treated as unknown chords. For instance, G:maj and G:maj7 are mapped to `G:maj'; G:dim and G:6 are all mapped to `N'.\footnote{Maybe it is worth noting here how the ground truth is distributed after this procedure? Most importantly the probability of the largest class?}
+with $S$ representing the 12 pitch classes (root notes) and $N$ being the label for unknown chords. In the calculation of the detection accuracy, the following chord types are mapped to the corresponding triads in the dictionary: triad major/minor and seventh major/minor. Other chord types are treated as unknown chords. For instance, G:maj and G:maj7 are mapped to `G:maj'; G:dim and G:6 are all mapped to `N'. The histogram of chords in our dataset after such mapping is shown in Fig.~\ref{fig:distrib}. 
+\begin{figure}
+ \centerline{\framebox{
+ \includegraphics[width=\columnwidth]{chordDistrib}}}
+ \caption{Chords histogram}
+ \label{fig:distrib}
+\end{figure}
 
 \subsection{Evaluation Metric}
 The used evaluation metric is the same as proposed in the audio chord detection task for MIREX 2013: the Weighted Chord Symbol Recall (WCSR) is used to estimate how well the predicted chords match the ground truth. WCSR, formulated in \eqnref{csr}, is defined as the total duration of segments with correct prediction: \footnote{verify that this is correct --- sounded to like it as the CSR divides byt the song length and the WCSR weights with the song length...}  
@@ -226,28 +234,22 @@ in which $n$ is the number of test samples (songs), $N$ is the total number of f
 
 \section{Experiments}
 
-\subsection{Learning strategy}
-There are three different training scenarios:
-\begin{itemize}
-	\item   unsupervised training (the trained network will be referred to as $DN_\mathrm{DBN}$)
-	\item   supervised training (the trained network will be referred to as $DN_\mathrm{DNN}$)
-    \item   the combination of unsupervised (pre-training) and supervised (fine-tuning) training  (the trained network will be referred to as $DN_\mathrm{DBN-DNN}$)
-\end{itemize} 
-In this experiment, no pre-processing is applied to the data; the input is simply the input representation (CQT followed by PCA) as described in Sect.~\ref{sec:input}. The chosen architecture for this experiment is the bottleneck architecture.
-As the $DN_\mathrm{DBN}$ scenario is unsupervised, we take the output of bottleneck layer as input to the classifier, in this case an SVM. For the $DN_\mathrm{DNN}$ (supervised but no pre-training), back propagation is used to train the neural network and an HMM with Viterbi decoding is used for classification. Finally, in the case of the $DN_\mathrm{DBN-DNN}$ (pre-training and supervised learning), three different classifiers are compared: the maximum of the softmax output (Argmax), an SVM, and an HMM. 
+\subsection{Post-classifiers}
+In this work, we use pre-train to initialize the networks followed by fine-tuning using back propagation. 
+In this experiment, no pre-processing is applied to the data; the input is simply the input representation (CQT followed by PCA) as described in Sect.~\ref{sec:input}. The chosen architecture for this experiment is the bottleneck architecture. 
+Three different classifiers are compared: the maximum of the softmax output (Argmax), an SVM, and an HMM. 
 \begin{table}
 \centering
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llr}
 %\begin{tabular}{@{}llr@{}}
 \toprule
 \textbf{Training Scenario} & \textbf{Classifier} & \textbf{WCSR}  \\ \hline
-$DN_\mathrm{DBN}$             & SVM            & 0.141 \\ 
-$DN_\mathrm{DNN}$              & HMM            & 0.159      \\ 
+
 $DN_\mathrm{DBN-DNN}$         & Argmax()            & 0.648 \\ 
 $DN_\mathrm{DBN-DNN}$          & SVM            & 0.645 \\ 
 $DN_\mathrm{DBN-DNN}$         &  HMM           & \textbf{0.755} \\ \bottomrule
 \end{tabular*}
-\caption{Chord detection performance for different learning strategies}
+\caption{Chord detection performance using different post-classifiers}
 \label{tab:dbn-dnn}
 \end{table}
 
@@ -255,15 +257,29 @@ Table \ref{tab:dbn-dnn} lists the results of the experiment. It comes as no surp
 
 \subsection{Pre-processing}
 As stated in Sect.~\ref{sec:pre-proc}, we investigate the application of different filters in the pre-processing stage. 
-In a first experiment, a single pole filter (see \eqnref{IIR}) is applied in an anti-causal way in order to assure zero phase. It has one parameter $\alpha$ for which the values 0.25, 0.5, and 0.75 are evaluated. In a second experiment, these filter outputs are spliced with the outputs of the extension filters as introduced in Sect.~\ref{sec:pre-proc}. These experiments are carried out with the  $DN_\mathrm{DBN-DNN}$ training scenario, a bottleneck architecture, and an HMM classifier. Table~\ref{tab:filter}\footnote{replace figure with table} lists the results of with these different pre-processing variants.
-\begin{figure}
- \centerline{\framebox{
- \includegraphics[width=\columnwidth]{filters.png}}}
- \caption{Comparison between different filters}
- \label{tab:filter}
-\end{figure}
+In a first experiment, a single pole filter (see \eqnref{IIR}) is applied in an anti-causal way in order to assure zero phase. It has one parameter $\alpha$ for which the values 0.25, 0.5, and 0.75 are evaluated. In a second experiment, these filter outputs are spliced with the outputs of the extension filters as introduced in Sect.~\ref{sec:pre-proc}. These experiments are carried out with the  $DN_\mathrm{DBN-DNN}$ training scenario, a bottleneck architecture, and an HMM classifier. Table~\ref{table:filter} lists the results of with these different pre-processing variants.
+%\begin{figure}
+% \centerline{\framebox{
+% \includegraphics[width=\columnwidth]{filters.png}}}
+% \caption{Comparison between different filters}
+% \label{tab:filter}
+%\end{figure}
+\begin{table}[h]
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llr}
+\toprule
+$\alpha$    & Pre-processing  & WCSR  \\  \midrule
+0.25 & N/A             & 0.758 \\
+0.25 & Spliced Filters & 0.912 \\
+0.5  & N/A             & 0.787 \\
+0.5  & Spliced Filters & 0.857 \\
+0.75 & N/A             & 0.798 \\
+0.75 & Spliced Filters & 0.919 \\ \bottomrule
+\end{tabular*}
+\caption{Chord detection performance using different filter parameters}
+\label{table:filter}
 
-It can observed that the network trained with filtered inputs slightly outperforms the network without pre-processing; splicing the filtered input with the extension filter outputs increases the results significantly ($p=???$)\footnote{compute significance}.
+\end{table}
+It can observed that the network trained with filtered inputs slightly outperforms the network without pre-processing; splicing the filtered input with the extension filter outputs increases the results significantly.
 
 \subsection{Architecture}
 \subsubsection{Common vs.\ Bottleneck}
