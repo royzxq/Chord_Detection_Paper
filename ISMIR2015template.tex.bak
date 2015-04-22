@@ -52,11 +52,11 @@
 \maketitle
 %
 \begin{abstract}
-In this paper, we utilize deep learning to learn high-level features for audio chord detection. The learned features, obtained with a deep network in bottleneck architecture, give promising results and outperform state-of-the-art systems. We present and evaluate the results for various methods and configurations, including input pre-processing, a bottleneck architecture, unsupervised pre-training, and SVMs vs.\ HMMs. 
+In this paper, we utilize deep learning to learn high-level features for audio chord detection. The learned features, obtained with a deep network in bottleneck architecture, give promising results and outperform state-of-the-art systems. We present and evaluate the results for various methods and configurations, including input pre-processing, a bottleneck architecture, and SVMs vs.\ HMMs. 
 \end{abstract}
 %
 \section{Introduction}
-The goal of automatic chord detection is to automatically recognize the chord progression in a music recording. It is an important task in the analysis of western music and music transcription, and it can contribute to applications such as music similarity measures, key detection, structural segmentation, and other semantic analysis tasks. Despite early successes in chord detection by using pitch chroma features and Hidden Markov Models (HMMs) \cite{fujishima1999realtime}, recent attempts at improving detection accuracy are only met with moderate success \cite{ueda2010hmm,cho2013mirex}.
+The goal of automatic chord detection is to automatically recognize the chord progression in a music recording. It is an important task in the analysis of western music and music transcription, and it can contribute to applications such as music similarity measures, key detection, structural segmentation, and other semantic analysis tasks. Despite early successes in chord detection by using pitch chroma features \cite{fujishima1999realtime} and Hidden Markov Models (HMMs) \cite{kawakami2000hidden}, recent attempts at improving detection accuracy are only met with moderate success \cite{ueda2010hmm,cho2013mirex}.
 
 In recent years, deep learning approaches have gained significant interest in the machine learning community as a way of building hierarchical representations from large amounts of data. Deep learning has been applied successfully in many fields. For instance, a system for speech recognition with deep learning was able to outperform state-of-the-art systems (not using deep learning) \cite{hinton2012deep}. Several studies indicate that deep learning methods can be very successful when applied to Music Information Retrieval (MIR) tasks, especially when used for feature learning \cite{lee2009unsupervised,battenberg2012analyzing,humphrey2012moving,hamel2010learning}. Deep learning, with its potential to untangle complicated patterns in large amounts of data, should be well suited for the task of chord detection.
 
@@ -74,7 +74,7 @@ We present individual results for different pre-processing options such as time 
 %\end{figure}
 
 \section{related work}
-During the past decade, deep learning has been considered by the machine learning community to be one of the most interesting and intriguing research topics. Deep architectures promise to remove the necessity of custom-designed and manually selected features as neural networks should be more powerful in disentangling interacting factors and thus be able to create meaningful high-level representations of the input data. Generally speaking, deep learning combines deep neural networks with an unsupervised learning model. Two major learning models are widely used for this purpose: Restricted Boltzmann Machines (RBMs) and Sparse Auto Encoders. A deep architecture comprises multiple stacked layers based on one of these two models. These layers can be trained one by one, a process that is referred to as ``pre-training'' the network. In this work, we employ RBMs to pre-train the deep architecture in an unsupervised fashion; this is called a Deep Belief Network (DBN). DBNs, composed of a stack of RBMs, essentially share the same topology with general neural networks: DBNs are generative probabilistic models with one visible layer and several hidden layers \cite{hinton2006fast}. 
+During the past decade, deep learning has been considered by the machine learning community to be one of the most interesting and intriguing research topics. Deep architectures promise to remove the necessity of custom-designed and manually selected features as neural networks should be more powerful in disentangling interacting factors and thus be able to create meaningful high-level representations of the input data. Generally speaking, deep learning combines deep neural networks with an unsupervised learning model. Two major learning models are widely used for the unsupervised learning: Restricted Boltzmann Machines (RBMs) and Sparse Auto Encoders. A deep architecture comprises multiple stacked layers based on one of these two models. These layers can be trained one by one, a process that is referred to as ``pre-training'' the network. In this work, we employ RBMs to pre-train the deep architecture in an unsupervised fashion; this is called a Deep Belief Network (DBN). DBNs, composed of a stack of RBMs, essentially share the same topology with general neural networks: DBNs are generative probabilistic models with one visible layer and several hidden layers \cite{hinton2006fast}. 
 
 Since Hinton proposed a fast learning algorithm for DBNs \cite{hinton2006fast}, it has been widely used for initializing deep neural networks. In deep structures, each layer learns relationships between units in lower layers. With the number of RBM layers increasing the complexity of the system increases, making the structure, theoretically, more powerful. An extra softmax output layer can be added to the top of the network (see \eqnref{softmax}); its output can be interpreted as the likelihood of each class.\footnote{add reference!}
 
@@ -165,7 +165,7 @@ The ideas of splicing and convolution can be combined, as exemplified by Fig.~\r
  \centerline{\framebox{
  \includegraphics[scale=0.6]{CNN}}}
  \caption{Splicing output of different filters}
- \label{fig:filtersplice}B
+ \label{fig:filtersplice}
 \end{figure}
 We call this kind of processing as ``spliced filters".
 
@@ -194,12 +194,12 @@ The output of the softmax layer can be interpreted as the likelihood of each cla
 Support Vector Machines (SVMs) are as a widely used classifier with generally good performance an obvious choice. The SVM is trained using the output of the network as features, and the classification is carried out for every frame. The classification is followed by a simple prediction smoothing.
 \subsection{Hidden Markov Model}
 HMMs are, as pointed out above, a standard classifier for automatic chord detection because the characteristics of the task fit the HMM approach well: Chords are hidden states that can be estimated from observations (feature vectors extracted from the audio signal), and the likelihood of chord transitions can be modeled with transition probabilities. 
-Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task \cite{papadopoulos2007large,lee2008acoustic}. In this work we are mostly interested in the performance comparison between different features, so a simple first-order HMM is used. 
+Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task \cite{papadopoulos2007large,lee2008acoustic}. In this work we are mostly interested in the performance comparison between high-level features, so a simple first-order HMM is used. 
 Given the probabilistic property of softmax output layer, we can use it directly as emission probabilities in the context of HMMs. Therefore, there is no need to train the HMM using, e.g., the commonly used Baum-Welch algorithm. Instead, the histogram of each class in our training is used as initial probabilities, and the bigram of chord transitions is used to compute the transition probabilities. Finally, we employ the Viterbi decoding algorithm to find the globally optimal chord sequence. 
 
 \section{Evaluation procedure}
 \subsection{Dataset}
-Our dataset is a combination of several different datasets, yielding a 311-piece collection. The data is composed of 
+Our dataset is a combination of several different datasets, yielding a 317-piece collection. The data is composed of 
 \begin{itemize}
 	\item   $180$ songs from the \textit{Beatles dataset} \cite{mauch2009omras2},
     \item   $100$ songs from the \textit{RWC Pop dataset} \cite{goto2002rwc}, 
