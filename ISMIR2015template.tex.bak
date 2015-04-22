@@ -210,9 +210,9 @@ The pre-processing as described in Sect.~\ref{sec:pre-proc} ensures identical in
 
 \subsection{Methodology}
 
-The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. After that, all the data in the training set will be used to train the post-classifier.
+The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. In the post-processing, all the data in the training set will be used to train the post-classifier.
 
-The chosen outputs for classification are major and minor triads for every root note, resulting in a dictionary of $24+1$ chord labels.
+The chosen ground truth for classification are major and minor triads for every root note, resulting in a dictionary of $24+1$ chord labels.
 Ground truth time-aligned chord symbols are mapped to this major/minor dictionary:
 \begin{equation}
 Chord_{majmin} \subset \{N\} \cup \{S \times {maj,min}\}
@@ -306,7 +306,7 @@ Bottleneck & Pooling & 0.960 & 0.916 \\ \bottomrule
 \label{tab:arch}
 \end{table}
 
-The results show that for the two pre-processing scenarios tested, the bottleneck architecture gives significantly better results ($p=0.023$) on the test set (WSCR). This is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
+The results show that for the three pre-processing scenarios tested: no additional pre-processing, spliced filters and spliced filters followed by a max pooling. The bottleneck architecture gives significantly better results ($p=0.023$) on the test set (WSCR). This is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
 The bottleneck architecture is clearly advantageous to use: it reduces complexity and thus the training workload and increases the classification performance significantly. Furthermore, the comparison of classifier performance between training and test set in Table~\ref{tab:arch} clearly indicates that the common architecture tends to fit more to the training data~---~the performance difference between training and test set is much higher for the common architecture.
 
 
