@@ -52,16 +52,16 @@
 \maketitle
 %
 \begin{abstract}
-In this paper, we utilize deep learning to learn high-level features for audio chord detection. The learned features, obtained with a deep network in bottleneck architecture, give promising results and outperform state-of-the-art systems. We present and evaluate the results for various methods and configurations, including input pre-processing, a bottleneck architecture, and SVMs vs.\ HMMs. 
+In this paper, we utilize deep learning to learn high-level features for audio chord detection. The learned features, obtained by a deep network in bottleneck architecture, give promising results and outperform state-of-the-art systems. We present and evaluate the results for various methods and configurations, including input pre-processing, a bottleneck architecture, and SVMs vs.\ HMMs. 
 \end{abstract}
 %
 \section{Introduction}
 The goal of automatic chord detection is to automatically recognize the chord progression in a music recording. It is an important task in the analysis of western music and music transcription, and it can contribute to applications such as music similarity measures, key detection, structural segmentation, and other semantic analysis tasks. Despite early successes in chord detection by using pitch chroma features \cite{fujishima1999realtime} and Hidden Markov Models (HMMs) \cite{kawakami2000hidden}, recent attempts at improving detection accuracy are only met with moderate success \cite{ueda2010hmm,cho2013mirex}.
 
-In recent years, deep learning approaches have gained significant interest in the machine learning community as a way of building hierarchical representations from large amounts of data. Deep learning has been applied successfully in many fields. For instance, a system for speech recognition with deep learning was able to outperform state-of-the-art systems (not using deep learning) \cite{hinton2012deep}. Several studies indicate that deep learning methods can be very successful when applied to Music Information Retrieval (MIR) tasks, especially when used for feature learning \cite{lee2009unsupervised,battenberg2012analyzing,humphrey2012moving,hamel2010learning}. Deep learning, with its potential to untangle complicated patterns in large amounts of data, should be well suited for the task of chord detection.
+In recent years, deep learning approaches have gained significant interest in the machine learning community as a way of building hierarchical representations from large amounts of data. Deep learning has been applied successfully in many fields. For instance, a system for speech recognition with deep learning was able to outperform state-of-the-art systems (not using deep learning) \cite{hinton2012deep}. Several studies indicate that deep learning methods can be very successful when applied to Music Information Retrieval (MIR) tasks, especially when used for feature learning \cite{lee2009unsupervised,battenberg2012analyzing,humphrey2012moving,hamel2010learning}. Deep learning, with its potential to untangle complicated patterns in a large amount of data, should be well suited for the task of chord detection.
 
 In this work, we investigate Deep Networks (DNs) for learning high-level and more representative features in the context of chord detection, effectively replacing the widely used pitch chroma intermediate representation. 
-We present individual results for different pre-processing options such as time splicing and filtering (see Sect.~\ref{sec:pre-proc}), training scenarios (see Sect.~\ref{sec:train}), architectures (see Sect.~\ref{sec:arch}), and output classifiers (see Sect.~\ref{sec:class}). %Since chords last for a period of time instead of static and instantaneous, we apply time splicing and convolution to account for relations between nearby frames. Then we can derive transition probability between chords from our training set and use the high-level probabilistic features as emission probability to decode the whole chord sequence. Alternatively we also train SVMs with same features and do the static classification frame by frame.
+We present individual results for different pre-processing options such as time splicing and filtering (see Sect.~\ref{sec:pre-proc}), architectures (see Sect.~\ref{sec:arch}), and output classifiers (see Sect.~\ref{sec:class}). %Since chords last for a period of time instead of static and instantaneous, we apply time splicing and convolution to account for relations between nearby frames. Then we can derive transition probability between chords from our training set and use the high-level probabilistic features as emission probability to decode the whole chord sequence. Alternatively we also train SVMs with same features and do the static classification frame by frame.
 
 %The definition of chords is, simply speaking, \"simultaneous sounding of two or notes". But in reality this is not the case. Real music often generate not only chord tones but nonchord tones with no guarantee of simultaneity. To make it more complicated, sometimes either some notes are missing or more notes are added-on into a chord. Thus, traditional chord detection systems exhibit a set of practical difficulties. Deep learning has a great potential in entangling complicated patterns within large data. Therefore, although chord detection is one of the most difficult and challenging tasks for music analysis, applying deep learning methods is much potentially promising. 
 %
@@ -74,9 +74,9 @@ We present individual results for different pre-processing options such as time 
 %\end{figure}
 
 \section{related work}
-During the past decade, deep learning has been considered by the machine learning community to be one of the most interesting and intriguing research topics. Deep architectures promise to remove the necessity of custom-designed and manually selected features as neural networks should be more powerful in disentangling interacting factors and thus be able to create meaningful high-level representations of the input data. Generally speaking, deep learning combines deep neural networks with an unsupervised learning model. Two major learning models are widely used for the unsupervised learning: Restricted Boltzmann Machines (RBMs) and Sparse Auto Encoders. A deep architecture comprises multiple stacked layers based on one of these two models. These layers can be trained one by one, a process that is referred to as ``pre-training'' the network. In this work, we employ RBMs to pre-train the deep architecture in an unsupervised fashion; this is called a Deep Belief Network (DBN). DBNs, composed of a stack of RBMs, essentially share the same topology with general neural networks: DBNs are generative probabilistic models with one visible layer and several hidden layers \cite{hinton2006fast}. 
+During the past decade, deep learning has been considered by the machine learning community to be one of the most interesting and intriguing research topics. Deep architectures promise to remove the necessity of custom-designed and manually selected features as neural networks should be more powerful in disentangling interacting factors and thus be able to create meaningful high-level representations of the input data. Generally speaking, deep learning combines deep neural networks with an unsupervised learning model. Two major learning models are widely used for the unsupervised learning: Restricted Boltzmann Machines (RBMs) and Sparse Auto Encoders. A deep architecture comprises multiple stacked layers based on one of these two models. These layers can be trained one by one, a process that is referred to as ``pre-training'' the network. In this work, we employ RBMs to pre-train the deep architecture in an unsupervised fashion; that is called a Deep Belief Network (DBN). DBNs, composed of a stack of RBMs, essentially share the same topology with general neural networks: DBNs are generative probabilistic models with one visible layer and several hidden layers \cite{hinton2006fast}. 
 
-Since Hinton proposed a fast learning algorithm for DBNs \cite{hinton2006fast}, it has been widely used for initializing deep neural networks. In deep structures, each layer learns relationships between units in lower layers. With the number of RBM layers increasing the complexity of the system increases, making the structure, theoretically, more powerful. An extra softmax output layer can be added to the top of the network (see \eqnref{softmax}); its output can be interpreted as the likelihood of each class.\footnote{add reference!}
+Since Hinton proposed a fast learning algorithm for DBNs \cite{hinton2006fast}, it has been widely used for initializing deep neural networks. In deep structures, each layer learns relationships between units in lower layers. With the number of RBM layers increasing the complexity of the system increases, making the structure, theoretically, more powerful. An extra softmax output layer can be added to the top of the network (see \eqnref{softmax}); its output can be interpreted as the likelihood of each class.
 
 LeCun formulated the idea of applying the Convolutional Neural Networks (CNNs) to images as well as speech and other time-series signals \cite{lecun1995convolutional}. This approach, allows to deal with the variability in time and space to a certain degree; CNNs can be seen as a special kind of neural network in which the weights are shared across the input within a certain spatial or temporal area. Therefore, it reduces the overfitting problem due to the weight sharing. The weights thus act as a kernel filter applied to the input. CNNs have been particularly successful in image analysis. For example, Norouzi et al.\ used Convolutional RBMs to learn shift-invariant features \cite{norouzi2009stacks}. 
 %\begin{figure}
@@ -157,7 +157,7 @@ y_{1}(n) = \sum_{k=1}^N a^{-k+1} x(n-N+k)
 y_{2}(n) = \sum_{k=1}^N a^{-k+1} x(n+N-k)
 \end{equation} 
 The filter length is $N$ and $a$ is the exponential base. 
-These filters are not centered around the current frame anymore, but shifted by $N$ frames. Their impulse responses are symmetric to each other. One could interpret these filters as to focus on past frames and future frames, respectively. We will refer to these filters as ``extension filters". 
+These two filters are not centered around the current frame anymore, but shifted by $N$ frames. Their impulse responses are symmetric to each other. One could interpret these filters as to focus on past frames and future frames, respectively. We will refer to these filters as ``extension filters". 
 
 The ideas of splicing and convolution can be combined, as exemplified by Fig.~\ref{fig:filtersplice}.
 %In a further processing, we combine the ideas of time splicing and convolution: we either conduct time splicing on the output of the low pass filter, or splice the output of different filters together, as in figure 4.
@@ -235,7 +235,7 @@ in which $n$ is the number of test samples (songs), $N$ is the total number of f
 \section{Experiments}
 
 \subsection{Post-classifiers}
-In this work, we use pre-train to initialize the networks followed by fine-tuning using back propagation. 
+We use pre-train to initialize the networks followed by fine-tuning using back propagation (represented as $DN_{DBN-DNN}$). 
 In this experiment, no pre-processing is applied to the data; the input is simply the input representation (CQT followed by PCA) as described in Sect.~\ref{sec:input}. The chosen architecture for this experiment is the bottleneck architecture. 
 Three different classifiers are compared: the maximum of the softmax output (Argmax), an SVM, and an HMM. 
 \begin{table}
@@ -267,11 +267,11 @@ In a first experiment, a single pole filter (see \eqnref{IIR}) is applied in an 
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llr}
 \toprule
 $\alpha$    & Pre-processing  & WCSR  \\  \midrule
-0.25 & N/A             & 0.758 \\
+0.25 & Filtering             & 0.758 \\
 0.25 & Spliced Filters & 0.912 \\
-0.5  & N/A             & 0.787 \\
+0.5  & Filtering             & 0.787 \\
 0.5  & Spliced Filters & 0.857 \\
-0.75 & N/A             & 0.798 \\
+0.75 & Filtering             & 0.798 \\
 0.75 & Spliced Filters & 0.919 \\ \bottomrule
 \end{tabular*}
 \caption{Chord detection performance using different filter parameters}
@@ -306,8 +306,8 @@ Bottleneck & Pooling & 0.960 & 0.916 \\ \bottomrule
 \label{tab:arch}
 \end{table}
 
-The results show that for the three pre-processing scenarios tested: no additional pre-processing, spliced filters and spliced filters followed by a max pooling. The bottleneck architecture gives significantly better results ($p=0.023$) on the test set (WSCR). This is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
-The bottleneck architecture is clearly advantageous to use: it reduces complexity and thus the training workload and increases the classification performance significantly. Furthermore, the comparison of classifier performance between training and test set in Table~\ref{tab:arch} clearly indicates that the common architecture tends to fit more to the training data~---~the performance difference between training and test set is much higher for the common architecture.
+The results show that for the three pre-processing scenarios tested: no additional pre-processing, spliced filters and spliced filters followed by a max pooling. The bottleneck architecture gives significantly better results ($p=0.023$) on the test set (WSCR). While this is not true for the training set (Training WSCR), for which the common architecture achieves results in the same range or better than the bottleneck architecture. The difference between the results on the training set and the test set are thus much larger for the common architecture than for the bottleneck architecture.
+The bottleneck architecture is clearly advantageous to use: it reduces complexity and thus the training workload and increases the classification performance significantly. Furthermore, the comparison of classifier performance between training and test set in Table~\ref{tab:arch} clearly indicates that the common architecture tends to fit more to the training data rather than the test data, i.e. more likely leading to overfitting. 
 
 
 \subsubsection{Single-Label vs.\ Multi-Label}
@@ -355,7 +355,7 @@ The presented results are clearly competitive with existing state-of-the-art sys
 %\subsection{Discussion}
 %We presented a comprehensive system for chord detection, that is competitive with the existing start-of-the-art systems. Our DBN-DNNs model can learn a high-level probabilistic representations for chords. The Viterbi algorithm is applied to find a global optimal path based on the output of our DBN-DNNs as the predicted chord sequence. Furthermore, the bottleneck structure have a stronger learning ability for chords information than the common architecture. By the process of ``encoding" and ``decoding", the networks retain the ``essential information" but discard the redundant ones. The results also indicate that applying pre-processing will significantly increase the accuracy. That's because it will introduce temporal continuity and dynamics into feature representation. Intuitively, dynamic programming algorithms such as Viterbi decoding outperforms the static classifiers such as SVMs due to the dynamic property of chords. Therefore introducing transition probability makes more sense. 
 
-\section{Conclusion}
+\section{Conclusion \& Future Works}
 In this work, we presented a system which applies deep learning to the MIR task of automatic chord detection. Our model is able to learn high-level probabilistic representations for chords across various configurations. We have shown that 
 the use of a bottleneck architecture is advantageous as it reduces overfitting and increases classifier performance, and that
 the choice of appropriate input filtering and splicing can significantly increase classifier performance.
