@@ -86,7 +86,7 @@ LeCun formulated the idea of applying the Convolutional Neural Networks (CNNs) t
 % \label{fig:cnn}
 %\end{figure}
 
-Modifications of the network architecture obviously result in different results. Grezl et al.\ used a so-called bottleneck architecture neural network to obtain features for speech recognition and showed that these features improve the accuracy of the task \cite{grezl2007probabilistic}. The principle behind the bottleneck-shaped architecture is that the number of neurons in the middle layer is lower than in the other layers as shown in Fig.~\ref{fig:bottleneck}. A network with bottleneck can be structured in two halfs. The first layer to the bottleneck layer, with a gradual decrease of the number of neurons per layer, functions as an encoding or compression process which compacts relevant information and discards redundant information. The second half from the bottleneck layer to the last layer has a gradual increase in the number of neurons per layer. The function of this part can be interpreted as a decoding process. An additional benefit of bottleneck architectures is that they can reduce overfitting by decreasing the system complexity.
+Modifications of the network architecture result in different results. Grezl et al.\ used a so-called bottleneck architecture neural network to obtain features for speech recognition and showed that these features improve the accuracy of the task \cite{grezl2007probabilistic}. The principle behind the bottleneck-shaped architecture is that the number of neurons in the middle layer is lower than in the other layers as shown in Fig.~\ref{fig:bottleneck}. A network with bottleneck can be structured in two halfs. The first layer to the bottleneck layer, with a gradual decrease of the number of neurons per layer, functions as an encoding or compression process which compacts relevant information and discards redundant information. The second half from the bottleneck layer to the last layer has a gradual increase in the number of neurons per layer. The function of this part can be interpreted as a decoding process. An additional benefit of bottleneck architectures is that they can reduce overfitting by decreasing the system complexity.
 
 Recently, more researchers investigated deep learning in the context of MIR. Lee et al.\ pioneered the application of convolutional deep learning for audio feature learning \cite{lee2009unsupervised}. Hamel et al.\ used the features learned from music with a DBN for both music genre classification and music auto-tagging \cite{hamel2010learning}; their system was successful in MIREX 2011 with top-ranked results. Battenberg employed a conditional DBN to analyze drum patterns \cite{battenberg2012analyzing}. The use of deep architectures for chord detections, however, has not yet been explored, although modern neural networks have been employed in this field. For instance, Boulanger et al.\ investigated recurrent neural networks \cite{boulanger2013audio} and Humphrey has explored CNNs \cite{humphrey2012rethinking,humphrey2012learning}. While they also used the concept of pre-training, their architectures have only two or 3 layers and thus cannot be called ``deep''.
 \begin{figure}
@@ -134,14 +134,14 @@ Time splicing is a simple way extend the current frame with the data of neighbor
 %\end{figure}
 
 \subsubsection{Convolution}
-Although we do not use CNNs, we employ a pre-processing step inspired by CNNs. Essentially, CNNs have one or more convolutional layers between the input and lower layers of the neural network. The function of a convolutional layer can be interpreted as the application of a linear filter plus a non-linear transformation, sometimes also combined with pooling operation:
+CNNs are extensively used in the tasks that want to take account the correlation between the inputs such as hand digits recognition. As stated before, it also works in the context of time series. For the reason that the deep learning toolbox does not support the convolution operation in time domain, we give up on the real CNNs, but we employ a pre-processing step inspired by CNNs. Essentially, CNNs have one or more convolutional layers between the input and lower layers of the neural network. The function of a convolutional layer can be interpreted as the application of a linear filter plus a non-linear transformation, sometimes also combined with pooling operation:
 \begin{equation}\label{Covulution}
 Y = \pool(\sigm(K \ast X + B)), 
 \end{equation}
 in which $Y$ is the output of a convolutional layer, $K$ is the linear kernel filter (impulse response), $X$ is the input, $B$ is the bias, $\sigm()$ is a non-linear transform, and $\pool()$ is a down-sampling operation. The uniqueness of convolutional networks stems from the convolution operation applied to the input $X$. We emulate this functionality by applying filters to the input signal. Instead of learning the filters, we manually design several filters.
 %Instead of training the filters automatically, we can make use of the prior knowledge to design the filters manually. In the case of chord detection, given we mainly want to extract time information by convolution, so we design time domain filters. \\
 
-An obvious choice are low pass filters. 
+A simple choice is low pass filter family. 
 We employ a simple single pole low pass filter due to its easy parameter configuration. \eqnref{IIR} shows the difference equation  for an input $x$.
 \begin{equation}\label{IIR}
 y_{n} = (1-\alpha) y_{n-1} + \alpha x_{n}
@@ -191,7 +191,7 @@ Our network is implemented using the Kaldi package developed by John Hopkins Uni
 \section{Classification}\label{sec:class}
 The output of the softmax layer can be interpreted as the likelihood of each class; taking the maximum will provide a class decision (this method will be referred to as \textit{Argmax}). Alternatively, the output can be treated as intermediate feature vector that can be used as an input to other classifiers for computing the final decision. 
 \subsection{Support Vector Machine}
-Support Vector Machines (SVMs) are as a widely used classifier with generally good performance an obvious choice. The SVM is trained using the output of the network as features, and the classification is carried out for every frame. The classification is followed by a simple prediction smoothing.
+Support Vector Machines (SVMs) are, as widely used classifiers with generally good performance, worthy trying. The SVM is trained using the output of the network as features, and the classification is carried out for every frame. The classification is followed by a simple prediction smoothing.
 \subsection{Hidden Markov Model}
 HMMs are, as pointed out above, a standard classifier for automatic chord detection because the characteristics of the task fit the HMM approach well: Chords are hidden states that can be estimated from observations (feature vectors extracted from the audio signal), and the likelihood of chord transitions can be modeled with transition probabilities. 
 Modified HMMs such as ergodic HMMs and key-independent HMMs have been also explored for this task \cite{papadopoulos2007large,lee2008acoustic}. In this work we are mostly interested in the performance comparison between high-level features, so a simple first-order HMM is used. 
@@ -206,6 +206,7 @@ Our dataset is a combination of several different datasets, yielding a 317-piece
     \item   $18$ songs from the \textit{Zweieck dataset} \cite{mauch2009omras2}, and 
     \item   $19$ songs from \textit{Queen dataset} \cite{mauch2009omras2}.
 \end{itemize}  
+On the training scale, we use a frame-based strategy, which means we divide each songs into frames, and treat each frame as an independent training sample. On average each song is divided into about 1200 frames resulting in approximately 300k training samples. As for testing scale, we calculate the frame-based accuracy as well, resulting in approximately 76k test samples. \\
 The pre-processing as described in Sect.~\ref{sec:pre-proc} ensures identical input audio formats.
 
 \subsection{Methodology}
@@ -217,7 +218,7 @@ Ground truth time-aligned chord symbols are mapped to this major/minor dictionar
 \begin{equation}
 Chord_{majmin} \subset \{N\} \cup \{S \times {maj,min}\}
 \end{equation}
-with $S$ representing the 12 pitch classes (root notes) and $N$ being the label for unknown chords. In the calculation of the detection accuracy, the following chord types are mapped to the corresponding triads in the dictionary: triad major/minor and seventh major/minor. Other chord types are treated as unknown chords. For instance, G:maj and G:maj7 are mapped to `G:maj'; G:dim and G:6 are all mapped to `N'. The histogram of chords in our dataset after such mapping is shown in Fig.~\ref{fig:distrib}. 
+with $S$ representing the 12 pitch classes (root notes) and $N$ being the label for unknown chords. In the calculation of the detection accuracy, the following chord types are mapped to the corresponding major/minor in the dictionary: triad major/minor and seventh major/minor. Other chord types are treated as unknown chords. For instance, G:maj and G:maj7 are mapped to `G:maj'; G:dim and G:6 are all mapped to `N'. The histogram of chords in our dataset after such mapping is shown in Fig.~\ref{fig:distrib}. 
 \begin{figure}
  \centerline{\framebox{
  \includegraphics[width=\columnwidth]{chordDistrib}}}
@@ -311,7 +312,7 @@ The bottleneck architecture is clearly advantageous to use: it reduces complexit
 
 
 \subsubsection{Single-Label vs.\ Multi-Label}
-As mentioned above, the pitch chroma is the standard feature representation for audio chord detection. Since we use the output of our deep network as feature, it seems an obvious choice to learn pitch class information (and thus, a pitch chroma) instead of the chord classes. By doing so, the number of outputs is reduced by a factor of two, and there would also be a closer relation between the output and the input representation, the CQT. Therefore, the abstraction and complexity of the task might be decreased. It will, however, lead to another issue: the single-label output (one chord per output) will be changed into a multi-label output (multiple pitches per output). Therefore, the learning has to be modified to allow multiple simultaneous (pitch class) labels. 
+As mentioned above, the pitch chroma is the standard feature representation for audio chord detection. Since we use the output of our deep network as feature, it seems an intuitive choice to learn pitch class information (and thus, a pitch chroma) instead of the chord classes. By doing so, the number of outputs is reduced by a factor of two, and there would also be a closer relation between the output and the input representation, the CQT. Therefore, the abstraction and complexity of the task might be decreased. It will, however, lead to another issue: the single-label output (one chord per output) will be changed into a multi-label output (multiple pitches per output). Therefore, the learning has to be modified to allow multiple simultaneous (pitch class) labels. 
 The experiment is carried out with both Splicing and Filtering in the pre-processing, the $DN_\mathrm{DBN-DNN}$ training scenario, and HMM classifiers. Table~\ref{tab:multilabel} lists the results. 
 
 \begin{table}
@@ -334,8 +335,8 @@ The results of the multi-label training of chroma vectors are disappointing; pos
 \end{inparaenum}
 
 
-\section{Results \& Discussion}
-It it always challenging to compare previous results because of the varying evaluation methodologies, metrics, and datasets. It seems that the results of Cho and Bello, who reported a performance of about 80\%, were computed with a comparable dataset. In order to provide a baseline result to put results into perspective, we present the results of Chordino \cite{mauch2010approximate} with the default settings, computed on our dataset. It should be pointed out that this comparison is unfair as Chordino is able to detect as many as 120 chords, compared to our 24. The chordino results are mapped to triads the same way as the ground truth annotations. The results are shown in Table~\ref{tab: final}. 
+\subsection{Results \& Discussion}
+It it always challenging to compare previous results because of the varying evaluation methodologies, metrics, and datasets. It seems that the results of Cho and Bello \cite{cho2013mirex}, who reported a performance of about 76\%, were computed with a comparable dataset. Referencing the recent MIREX results on Chord Detection, although the  evaluation vocabulary is different, we can see a big improvement on the performance. In order to provide a baseline result to put results into perspective, we present the results of Chordino \cite{mauch2010approximate} with the default settings, computed on our dataset. It should be pointed out that this comparison is unfair as Chordino is able to detect as many as 120 chords, compared to our 24. The label mapping strategies are another significant issue for Chordino. Our label mapping results in nearly sixth of the total label are ``N", which can mess the Chordino results up. The Chordino results are mapped to major/minor the same way as the ground truth annotations. The results are shown in Table~\ref{tab: final}. 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}
