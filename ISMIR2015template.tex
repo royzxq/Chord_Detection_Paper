@@ -206,12 +206,13 @@ Our dataset is a combination of several different datasets, yielding a 317-piece
     \item   $18$ songs from the \textit{Zweieck dataset} \cite{mauch2009omras2}, and 
     \item   $19$ songs from \textit{Queen dataset} \cite{mauch2009omras2}.
 \end{itemize}  
-On the training scale, we use a frame-based strategy, which means we divide each songs into frames, and treat each frame as an independent training sample. On average each song is divided into about 1200 frames resulting in approximately 300k training samples. As for testing scale, we calculate the frame-based accuracy as well, resulting in approximately 76k test samples. \\
 The pre-processing as described in Sect.~\ref{sec:pre-proc} ensures identical input audio formats.
 
 \subsection{Methodology}
 
-The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. Within the training set, 10\% of the data is used as a validation set. For the post-processing, all data in the training set will be used to train the post-classifier.
+Because training deep networks is time-consuming especially without GPU. Thus we have to give up cross validation evaluation due to the limited computing resources. The dataset is divided randomly into two parts: 80\% for the training set and 20\% for the test set. On the training scale, we use a frame-based strategy, which means we divide each song into frames, and treat each frame as an independent training sample. On average each song is divided into about 1200 frames resulting in approximately 300k training samples. As for testing scale, we calculate the frame-based accuracy as well, resulting in approximately 76k test samples. 
+
+Within the training set, 10\% of the data is used as a validation set. For the post-processing, all data in the training set will be used to train the post-classifier.
 
 The chosen ground truth for classification are major and minor triads for every root note, resulting in a dictionary of $24+1$ chord labels.
 Ground truth time-aligned chord symbols are mapped to this major/minor dictionary:
