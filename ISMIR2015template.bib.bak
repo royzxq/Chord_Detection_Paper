@@ -234,3 +234,11 @@
   year={2003},
   publisher={International Symposium on Music Information Retrieval}
 }
+
+@inproceedings{poultney2006efficient,
+  title={Efficient learning of sparse representations with an energy-based model},
+  author={Poultney, Christopher and Chopra, Sumit and Cun, Yann L and others},
+  booktitle={Advances in neural information processing systems},
+  pages={1137--1144},
+  year={2006}
+}
