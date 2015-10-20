@@ -1,0 +1,16 @@
+@inproceedings{hamel2010learning,
+  title={Learning Features from Music Audio with Deep Belief Networks.},
+  author={Hamel, Philippe and Eck, Douglas},
+  booktitle={ISMIR},
+  pages={339--344},
+  year={2010},
+  organization={Utrecht, The Netherlands}
+}
+@inproceedings{humphrey2012moving,
+  title={Moving Beyond Feature Design: Deep Architectures and Automatic Feature Learning in Music Informatics.},
+  author={Humphrey, Eric J and Bello, Juan Pablo and LeCun, Yann},
+  booktitle={Proc. ISMIR},
+  pages={403--408},
+  year={2012},
+  organization={Porto, Portugal}
+}

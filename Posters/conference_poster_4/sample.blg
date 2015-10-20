@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: sample.aux
+The style file: unsrt.bst
+Database file #1: sample.bib
+You're missing a field name---line 10 of file sample.bib
+ : 
+ : %  title={Moving Beyond Feature Design: Deep Architectures and Automatic Feature Learning in Music Informatics.},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty author in humphrey2012moving
+Warning--empty title in humphrey2012moving
+Warning--empty booktitle in humphrey2012moving
+Warning--empty year in humphrey2012moving
+You've used 2 entries,
+            1791 wiz_defined-function locations,
+            452 strings with 3679 characters,
+and the built_in function-call counts, 517 in all, are:
+= -- 44
+> -- 9
+< -- 1
++ -- 4
+- -- 2
+* -- 32
+:= -- 62
+add.period$ -- 5
+call.type$ -- 2
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 32
+empty$ -- 62
+format.name$ -- 2
+if$ -- 124
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 11
+num.names$ -- 1
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 21
+stack$ -- 0
+substring$ -- 32
+swap$ -- 12
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 4
+while$ -- 4
+width$ -- 3
+write$ -- 18
+(There was 1 error message)
