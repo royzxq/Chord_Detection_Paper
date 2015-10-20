@@ -5,4 +5,11 @@ Philippe Hamel and Douglas Eck.
 \newblock Learning features from music audio with deep belief networks.
 \newblock In {\em ISMIR}, pages 339--344. Utrecht, The Netherlands, 2010.
 
+\bibitem{mauch2010approximate}
+Matthias Mauch and Simon Dixon.
+\newblock Approximate note transcription for the improved identification of
+  difficult chords.
+\newblock In {\em Proceedings of the International Conference on Music
+  Information Retrieval (ISMIR)}, pages 135--140, 2010.
+
 \end{thebibliography}
