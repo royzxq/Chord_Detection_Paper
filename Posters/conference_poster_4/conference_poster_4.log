@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 OCT 2015 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  20 OCT 2015 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -458,10 +458,10 @@ File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.0 (rcs-revision 1.9)
 \baposter@basemarginright=\skip67
 \baposter@basemarginleft=\skip68
 
-Paperwidth=2890.79999pt
-Paperheight=2168.09999pt
-BasePaperwidth=910.60904pt
-BasePaperheight=682.95679pt
+Paperwidth=2312.64pt
+Paperheight=2890.79999pt
+BasePaperwidth=728.48724pt
+BasePaperheight=910.60904pt
 (/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -832,12 +832,12 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: landscape 
-* h-part:(L,W,R)=(13.44402pt, 883.72101pt, 13.44402pt)
-* v-part:(T,H,B)=(13.44402pt, 656.06876pt, 13.44402pt)
-* \paperwidth=910.60904pt
-* \paperheight=682.95679pt
-* \textwidth=883.72101pt
-* \textheight=656.06876pt
+* h-part:(L,W,R)=(13.44402pt, 701.59921pt, 13.44402pt)
+* v-part:(T,H,B)=(13.44402pt, 883.72101pt, 13.44402pt)
+* \paperwidth=728.48724pt
+* \paperheight=910.60904pt
+* \textwidth=701.59921pt
+* \textheight=883.72101pt
 * \oddsidemargin=-58.82597pt
 * \evensidemargin=-58.82597pt
 * \topmargin=-95.82597pt
@@ -897,23 +897,13 @@ File: omsppl.fd
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
 
-Underfull \hbox (badness 5077) in paragraph at lines 136--136
-\T1/ppl/m/n/10 are mapped into the cor-re-spond-ing ma-
- []
-
 <chordDistrib.png, id=35, 578.16pt x 433.62pt>
 File: chordDistrib.png Graphic file (type png)
  <use chordDistrib.png>
 Package pdftex.def Info: chordDistrib.png used on input line 136.
-(pdftex.def)             Requested size: 203.43025pt x 152.56987pt.
+(pdftex.def)             Requested size: 217.19626pt x 162.8916pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <9> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 136.
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -921,20 +911,20 @@ Missing character: There is no ; in font nullfont!
 <flowchart.png, id=36, 564.6696pt x 796.4154pt>
 File: flowchart.png Graphic file (type png)
  <use flowchart.png>
-Package pdftex.def Info: flowchart.png used on input line 198.
-(pdftex.def)             Requested size: 123.5605pt x 174.26405pt.
+Package pdftex.def Info: flowchart.png used on input line 184.
+(pdftex.def)             Requested size: 131.82019pt x 185.9181pt.
 
 <CNN.png, id=37, 1516.7064pt x 396.5214pt>
 File: CNN.png Graphic file (type png)
  <use CNN.png>
-Package pdftex.def Info: CNN.png used on input line 198.
-(pdftex.def)             Requested size: 205.93208pt x 53.83664pt.
+Package pdftex.def Info: CNN.png used on input line 184.
+(pdftex.def)             Requested size: 219.69809pt x 57.43665pt.
 
 <arch.png, id=38, 790.955pt x 628.3475pt>
 File: arch.png Graphic file (type png)
  <use arch.png>
-Package pdftex.def Info: arch.png used on input line 198.
-(pdftex.def)             Requested size: 185.33762pt x 147.23022pt.
+Package pdftex.def Info: arch.png used on input line 184.
+(pdftex.def)             Requested size: 197.72693pt x 157.07689pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -942,23 +932,29 @@ Missing character: There is no ; in font nullfont!
 <post-classifier.png, id=39, 816.651pt x 120.9318pt>
 File: post-classifier.png Graphic file (type png)
  <use post-classifier.png>
-Package pdftex.def Info: post-classifier.png used on input line 236.
-(pdftex.def)             Requested size: 164.74629pt x 24.39629pt.
+Package pdftex.def Info: post-classifier.png used on input line 233.
+(pdftex.def)             Requested size: 175.75914pt x 26.02565pt.
 
-<architecture.png, id=40, 361.8318pt x 217.2918pt>
-File: architecture.png Graphic file (type png)
- <use architecture.png>
-Package pdftex.def Info: architecture.png used on input line 236.
-(pdftex.def)             Requested size: 164.74629pt x 98.93422pt.
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-<final.png, id=41, 723.1818pt x 222.5916pt>
+<final.png, id=40, 723.1818pt x 222.5916pt>
 File: final.png Graphic file (type png)
  <use final.png>
-Package pdftex.def Info: final.png used on input line 260.
-(pdftex.def)             Requested size: 183.08598pt x 56.35083pt.
+Package pdftex.def Info: final.png used on input line 233.
+(pdftex.def)             Requested size: 175.75914pt x 54.09557pt.
+
+Underfull \hbox (badness 6708) in paragraph at lines 233--233
+[]\T1/ppl/m/n/10 Finally, we com-pare our sys-tem with
+ []
+
+
+Underfull \hbox (badness 6808) in paragraph at lines 233--233
+\T1/ppl/m/n/10 Chordino[[]] un-der the de-fault set-tings
+ []
+
+<architecture.png, id=41, 361.8318pt x 217.2918pt>
+File: architecture.png Graphic file (type png)
+ <use architecture.png>
+Package pdftex.def Info: architecture.png used on input line 233.
+(pdftex.def)             Requested size: 219.69809pt x 131.9344pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -970,20 +966,23 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
  [2
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./gtcmt
 .png> <./chordDistrib.png> <./flowchart.png> <./CNN.png> <./arch.png> <./post-c
-lassifier.png> <./architecture.png> <./final.png>] (./conference_poster_4.aux) 
+lassifier.png> <./final.png> <./architecture.png>] (./conference_poster_4.aux) 
 ) 
 Here is how much of TeX's memory you used:
- 19199 strings out of 493089
- 410936 string characters out of 6134842
- 500361 words of memory out of 5000000
- 22285 multiletter control sequences out of 15000+600000
+ 19053 strings out of 493089
+ 407092 string characters out of 6134842
+ 490254 words of memory out of 5000000
+ 22139 multiletter control sequences out of 15000+600000
  25506 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,10n,92p,626b,981s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,10n,92p,626b,979s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
@@ -991,7 +990,7 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on conference_poster_4.pdf (1 page, 697797 bytes).
+Output written on conference_poster_4.pdf (1 page, 696831 bytes).
 PDF statistics:
  81 PDF objects out of 1000 (max. 8388607)
  37 compressed objects within 1 object stream

@@ -72,8 +72,8 @@ linewidth=2pt % Width of the border lines around content boxes
 %----------------------------------------------------------------------------------------
 %
 {\includegraphics[height=4em]{gtcmt}} % First university/lab logo on the left
-{\bf\textsc{Chord Detection Using Deep Learning}\vspace{0.5em}} % Poster title
-{\textsc{\{ Xinquan Zhou and Alexander Lerch \} \hspace{12pt} Georgia Tech Center for Music Technology}} % Author names and institution
+{\bf\textsc{Chord Detection Using \\ Deep Learning}\vspace{0.5em}} % Poster title
+{\textsc{\{ Xinquan Zhou and Alexander Lerch \} \hspace{12pt} \\ Georgia Tech Center for Music Technology}} % Author names and institution
 %{\includegraphics[height=4em]{logo.png}} % Second university/lab logo on the right
 
 %----------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ the task of chord detection.
 %	data set
 %----------------------------------------------------------------------------------------
 
-\headerbox{Data set}{name=dataset,below=objectives,column=0, above=bottom}{
+\headerbox{Data set}{name=dataset,below=objectives,column=0}{
 
 %Aliquam non lacus dolor, \textit{a aliquam quam}. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla in nibh mauris. Donec vel ligula nisi, a lacinia arcu. Sed mi dui, malesuada vel consectetur et, egestas porta nisi. Sed eleifend pharetra dolor, et dapibus est vulputate eu. \textbf{Integer faucibus elementum felis vitae fringilla.} In hac habitasse platea dictumst. Duis tristique rutrum nisl, nec vulputate elit porta ut. Donec sodales sollicitudin turpis sed convallis. Etiam mauris ligula, blandit adipiscing condimentum eu, dapibus pellentesque risus.
 %
@@ -140,31 +140,9 @@ types are treated as unknown chords.
 
 
 
-%----------------------------------------------------------------------------------------
-%	CONTACT INFORMATION
-%----------------------------------------------------------------------------------------
-
-\headerbox{Contact Information}{name=contact,column=3,above=bottom}{ % This block is as tall as the references block
-
-\begin{description}\compresslist
-%\item[Web] www.university.edu/smithlab
-\item[Email] {xzhou89, alexander.lerch}@gatech.edu
-\item[Phone] +1 (404) 398 7794
-\end{description}
-}
 
 
-%----------------------------------------------------------------------------------------
-%	FUTURE RESEARCH
-%----------------------------------------------------------------------------------------
 
-\headerbox{Future Research}{name=futureresearch,column=1,span=2,above=bottom}{ % This block is as tall as the references block
-
-\begin{multicols}{2}
-Learning a pitch class vector instead of chord likelihood
-with multi-label learning would allow the deep networks be independent of the number of chords to be detected. Additionally, we could work on the splicing filter design in a more systematical way.
-\end{multicols}
-}
 
 %----------------------------------------------------------------------------------------
 %	MATERIALS AND METHODS
@@ -182,7 +160,15 @@ used pitch chroma intermediate representation. And feed the features into post c
 \captionof{figure}{The flow chart of the system}
 \end{center}
 
-For pre-processing, we employ both time splicing and "convolution" (spliced filters) methods. Time splicing is to simply join several adjacent frames into a "super" frame; the "convolution" is to use a set of heuristic templates to convolve with the input frames and splice the results together, followed by an optional pooling operation. An illustration of the convolution method is shown in the following figures;  
+
+For pre-processing, we employ both time splicing and "convolution" (spliced filters) methods. 
+\begin{itemize}\compresslist
+\item Time splicing is to simply join several adjacent frames into a "super" frame
+\item The "convolution" is to use a set of heuristic templates to convolve with the input frames and splice the results together, followed by an optional pooling operation.
+\end{itemize}
+An illustration of the convolution method is shown in the following figures: 
+
+
 \begin{center}
 \includegraphics[width=1.0\linewidth]{CNN.png}
 \captionof{figure}{Spliced filters illustration}
@@ -201,32 +187,43 @@ For networks architectures we compare bottleneck and the common ones;
 %	RESULTS 1
 %----------------------------------------------------------------------------------------
 
-\headerbox{Results 1 }{name=results,column=1,span=2,below=method, above=bottom}{
+\headerbox{Results}{name=results,column=1,span=2,below=method}{
 
 \begin{multicols}{2}
 %\vspace{1em}
+\begin{itemize}\compresslist
+\item Three different post classifiers are compared. The Weighted Chord Symbol Recall (WCSR) are used to evaluate the system.
+\item Both architectures is evaluated in comparison. WCSR computed on the training
+set is reported as well. Different pre-processing methods are applied respectively.
 
-Three different post classifiers are compared: Taking maximum(Argmax), an SVM, and an HMM. The Weighted Chord Symbol Recall (WCSR) are used to evaluate the system.
+\end{itemize}
+
 %\end{multicols}
 \begin{center}
 \includegraphics[width=0.8\linewidth]{post-classifier}
 \captionof{figure}{Results using different post-classifiers}
 \end{center}
 
+\begin{center}
+\includegraphics[width=0.8\linewidth]{final}
+\captionof{figure}{Final results}
+\end{center}
 %------------------------------------------------
 
 %\begin{multicols}{1}
 %\vspace{1em}
 
-Both architectures is evaluated in comparison. WCSR computed on the training
-set is reported as well. No pre-processing, spliced filters and
-spliced filters followed by a max pooling are applied respectively. 
+ 
 %The bottleneck
 %architecture gives significantly better results (p = 0.023)
 %on the test set.
-
+\begin{itemize}\compresslist
+\item Finally, we compare our system with
+Chordino\cite{mauch2010approximate} under the default settings based on our
+dataset.
+\end{itemize}
 \begin{center}
-\includegraphics[width=0.8\linewidth]{architecture}
+\includegraphics[width=1\linewidth]{architecture}
 \captionof{figure}{Results using different architectures}
 \end{center}
 
@@ -238,33 +235,33 @@ spliced filters followed by a max pooling are applied respectively.
 %	RESULTS 2
 %----------------------------------------------------------------------------------------
 
-\headerbox{Results 2}{name=results2,column=3}{ % This block's bottom aligns with the bottom of the conclusion block
-%It seems a
-%promising choice to learn pitch class information instead of the chord classes. It will,
-%however, lead to another issue: the single-label output (one
-%chord per output) will be changed into a multi-label output
-%(multiple pitches per output).
-%\begin{center}
-%\includegraphics[width=0.8\linewidth]{multilabel.png}
-%\captionof{figure}{Comparison between training strategies }
-%\end{center}
-
+%\headerbox{Results 2}{name=results2,column=3}{ % This block's bottom aligns with the bottom of the conclusion block
+%%It seems a
+%%promising choice to learn pitch class information instead of the chord classes. It will,
+%%however, lead to another issue: the single-label output (one
+%%chord per output) will be changed into a multi-label output
+%%(multiple pitches per output).
+%%\begin{center}
+%%\includegraphics[width=0.8\linewidth]{multilabel.png}
+%%\captionof{figure}{Comparison between training strategies }
+%%\end{center}
 %
-Finally, we present the results of
-Chordino\cite{mauch2010approximate} with the default settings, computed on our
-dataset and compare it with our system. 
-\begin{center}
-\includegraphics[width=0.9\linewidth]{final}
-\captionof{figure}{Final results}
-\end{center}
-}
+%%
+%Finally, we present the results of
+%Chordino\cite{mauch2010approximate} with the default settings, computed on our
+%dataset and compare it with our system. 
+%\begin{center}
+%\includegraphics[width=0.9\linewidth]{final}
+%\captionof{figure}{Final results}
+%\end{center}
+%}
 
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Conclusion}{name=conclusion,column=3,span=1,below=results2}{
+\headerbox{Conclusion}{name=conclusion,column=1,span=2,below=results,above=bottom}{
 
 
 
@@ -299,17 +296,19 @@ dataset and compare it with our system.
 %as it reduces overfitting and increases classifier performance,
 %and that the choice of appropriate input filtering and
 %splicing can significantly increase classifier performance.
+\begin{multicols}{2}
 \begin{itemize}\compresslist
 \item Our
 model is able to learn high-level probabilistic representations
-for chords across various configurations.
+for chords.
 \item The use of a bottleneck architecture is advantageous
 as it reduces overfitting and significantly increases classifier performance (p = 0.023).
-\item HMMs or Viterbi decoding algorithm fits the task better than the static classifiers. 
-\item The choice of appropriate input filtering and
-splicing can significantly increase classifier performance.
+\item HMMs fits the task better than the static classifiers. 
+\item The choice of appropriate filtering and
+splicing can significantly influence the performance.
 \item The pooling operation is preferable because it reduce the system complexity without sacrificing the performance. 
 \end{itemize}
+\end{multicols}
 %
 }
 
@@ -317,7 +316,7 @@ splicing can significantly increase classifier performance.
 %	REFERENCES
 %----------------------------------------------------------------------------------------
 
-\headerbox{References}{name=references,column=3,below=conclusion, above=contact}{
+\headerbox{References}{name=references,column=0,below=dataset}{
 
 \renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
 \nocite{*} % Insert publications even if they are not cited in the poster
@@ -325,6 +324,31 @@ splicing can significantly increase classifier performance.
 \bibliographystyle{unsrt}
 \bibliography{conference_poster_4} % Use sample.bib as the bibliography file
 }}
+
+%----------------------------------------------------------------------------------------
+%	FUTURE RESEARCH
+%----------------------------------------------------------------------------------------
+
+%\headerbox{Future Research}{name=futureresearch,column=2,below=results}{ % This block is as tall as the references block
+%
+%
+%Learning a pitch class vector instead of chord likelihood
+%with multi-label learning would allow the deep networks be independent of the number of chords to be detected. 
+%
+%}
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Contact Information}{name=contact,column=0,below=references,above=bottom}{ % This block is as tall as the references block
+
+\begin{description}\compresslist
+%\item[Web] gtcmt.gatech.edu/research/music-informatics
+\item[Email] {xzhou89, alexander.lerch}@gatech.edu
+\item[Phone] +1 (404) 398 7794
+\end{description}
+}
 
 
 \end{poster}
